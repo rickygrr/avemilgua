@@ -19,16 +19,16 @@
                         <form class="form-horizontal" role="form" action="index.php" method="post"  enctype="multipart/form-data">
 <!-- Inicia Formulario (Peledahe) -->
                                         <input class="text" name="p" type="hidden" value="proceso/indicadores_edit.php"/>
-                                        
-                                        
+
+
                                         <div class="form-group">
-                     
+
                     <label for="seccion" class="col-sm-2 control-label">Perfil</label>
                             <div class="col-sm-4">
                                 <select id="perfil" class="form-control col-md-12" name="perfil" required="">
                                     <?php
-                                        $sql2="SELECT co.id, 
-                                                      co.nombre, 
+                                        $sql2="SELECT co.id,
+                                                      co.nombre,
                                                       co.institucion,
                                                       (select i.nombre from ap_instituciones i where i.id = co.institucion) as ninstitucion
                                                 FROM ap_perfil co
@@ -38,9 +38,9 @@
                                         $resp2 = mysql_query($sql2);
                                     ?>
                                     <option value="" selected="selected" >Seleccionar</option>
-                                    <?php 
+                                    <?php
                                         while($row2=mysql_fetch_assoc($resp2)){
-                                            if ($refa == '') { 
+                                            if ($refa == '') {
                                                 echo "<optgroup label='".utf8_encode($row2['ninstitucion'])."'>";
                                                 $refa = $row2['ninstitucion'];
                                             } elseif ($refa != $row2['ninstitucion']) {
@@ -55,7 +55,7 @@
                                 </select>
                             </div>
                     </div>
-                                        
+
                                         <center>
                                     <div class='btn-group' >
                                           <button type="submit" class="btn btn-success" value="Ingresar" name="btn" >Ingresar Datos</button>

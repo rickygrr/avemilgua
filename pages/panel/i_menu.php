@@ -26,7 +26,8 @@
             <li>
                 <a href="#"><i class="fa fa-briefcase fa-fw"></i> Administración<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="index.php?p=proceso/indicadores_edit.php">Ingreso de Datos</a></li>
+                    <!--<li><a href="index.php?p=proceso/indicadores_edit.php">Ingreso de Datos</a></li>-->
+                    <li><a href="index.php?p=proceso/indicadores_go.php">Ingreso de Indicadores</a></li>
                     <li><a href="index.php?p=proceso/subirarchivo_go.php">Subir Archivo</a></li>
                 </ul>
 

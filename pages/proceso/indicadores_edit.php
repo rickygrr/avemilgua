@@ -70,21 +70,25 @@
                 $perfil = isset_or('perfil', '0');
                 $sql1 = "SELECT
                             p.alarmas as palarmas,
+                            (SELECT alarmas FROM cy_indicadores WHERE perfil = '".$perfil."' ORDER BY id DESC LIMIT 1 ) as ant_alarmas,
                             p.eventos as peventos,
+                            (SELECT eventos FROM cy_indicadores WHERE perfil = '".$perfil."' ORDER BY id DESC LIMIT 1 ) as ant_eventos,
                             p.traffic_mb as ptraffic_mb,
                             p.flows as pflows,
                             p.pckets as ppckets,
                             p.telefono_docs,
                             p.email_docs
-			FROM ap_perfil p
-                        WHERE p.id = " . $perfil . "
-			ORDER BY p.id +0";
+                         FROM ap_perfil p
+                        WHERE p.id = '" . $perfil . "'
+                     ORDER BY p.id +0";
 	    	//echo "<br>[SQL] ".$sql. " [Fin SQL]";
 	    $resp1 = mysql_query($sql1);
             if ($resp1) {
                 while($row1=mysql_fetch_assoc($resp1)){
                             $palarmas = $row1['palarmas'];
+                            $ant_alarmas = $row1['ant_alarmas'];
                             $peventos = $row1['peventos'];
+                            $ant_eventos = $row1['ant_eventos'];
                             $ptraffic_mb = $row1['ptraffic_mb'];
                             $pflows = $row1['pflows'];
                             $ppckets = $row1['ppckets'];
@@ -194,9 +198,9 @@
                 echo "<input class='text' name='institucion' id='institucion' type='hidden' value='" . $_SESSION['usuario_institucion'] . "'/>";
 ?>
                     <label for="seccion" class="col-sm-2 control-label">Perfil</label>
-                    <input type="hidden" class="form-control" id="perfil2" placeholder="0" name="perfil2" value="<?php echo $perfil; ?>"  >
+                    <input type="hidden" class="form-control" id="perfil" placeholder="0" name="perfil" value="<?php echo $perfil; ?>"  >
                             <div class="col-sm-4">
-                                <select id="perfil" class="form-control col-md-12" name="perfil" required="">
+                                <select id="perfil2" class="form-control col-md-12" name="perfil2" disabled="">
                                     <?php
                                         $sql2="SELECT co.id,
                                                       co.nombre,
@@ -233,7 +237,7 @@
                         <div class="col-sm-4">
                             <input type="date" class="form-control" id="fecha" placeholder="aaaa-mm-dd" name="fecha" value="<?php echo utf8_encode($fecha); ?>" required="">
                         </div>
-                    
+
                         <label for="hora" class="col-sm-2 control-label">Hora</label>
                         <div class="col-sm-4">
                             <input type="time" class="form-control" id="hora" placeholder="hh:mm:ss" name="hora" value="<?php echo utf8_encode($hora); ?>" required="">
@@ -250,7 +254,7 @@
                         </div>
                         <label for="dif_alarmas" class="col-sm-2 control-label">Alarma Anterior</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="alarma_ant" placeholder="0" name="dif_alarmas1" value="<?php echo utf8_encode($dif_alarmas); ?>" disabled="">
+                            <input type="text" class="form-control" id="alarma_ant" placeholder="0" name="dif_alarmas1" value="<?php echo utf8_encode($ant_alarmas); ?>" disabled="">
                         </div>
                         <label for="dif_alarmas" class="col-sm-2 control-label">Dif. Alarmas</label>
                         <div class="col-sm-4">
@@ -269,7 +273,7 @@
                       </div>
                       <label for="dif_eventos" class="col-sm-2 control-label">Evento Anterior</label>
                       <div class="col-sm-4">
-                          <input type="text" class="form-control" id="evento_ant" placeholder="0" name="dif_eventos1" value="<?php echo utf8_encode($dif_eventos); ?>" disabled="">
+                          <input type="text" class="form-control" id="evento_ant" placeholder="0" name="dif_eventos1" value="<?php echo utf8_encode($ant_eventos); ?>" disabled="">
                       </div>
                       <label for="dif_eventos" class="col-sm-2 control-label">Dif. Eventos</label>
                       <div class="col-sm-4">
@@ -318,12 +322,12 @@
                         <label for="usuario_alta" class="col-sm-2 control-label">Usuario</label>
                         <div class="col-sm-4">
                             <input type="hidden" class="form-control" id="usuario_alta" placeholder="usuario_alta" name="usuario_alta" value="<?php echo utf8_encode($usuario_alta); ?>" >
-                            <input type="hidden" class="form-control" id="usuario_alta1" placeholder="usuario_alta" name="usuario_alta1" value="<?php echo utf8_encode($usuario_alta); ?>" disabled="">
+                            <input type="text" class="form-control" id="usuario_alta1" placeholder="usuario_alta" name="usuario_alta1" value="<?php echo utf8_encode($usuario_alta); ?>" disabled="">
                         </div>
                         <label for="fecha_alta" class="col-sm-2 control-label">Fecha de Ingreso</label>
                         <div class="col-sm-4">
                             <input type="hidden" class="form-control" id="fecha_alta" placeholder="aaaa-mm-dd hh:mm:ss" name="fecha_alta" value="<?php echo utf8_encode($fecha_alta); ?>" >
-                            <input type="hidden" class="form-control" id="fecha_alta1" placeholder="aaaa-mm-dd hh:mm:ss" name="fecha_alta1" value="<?php echo utf8_encode($fecha_alta); ?>" disabled="">
+                            <input type="text" class="form-control" id="fecha_alta1" placeholder="aaaa-mm-dd hh:mm:ss" name="fecha_alta1" value="<?php echo utf8_encode($fecha_alta); ?>" disabled="">
                         </div>
                     </div>
 
@@ -357,111 +361,79 @@
 <!-- Finaliza Area Scripts Locales -->
 <script>
     // Trae la siguiente fecha de pago (un solo dato)
+    var n1 = 0;
+    var n2 = 0;
+    var n3 = 0;
     $(document).ready(function(){
-        $("#alarmas").change(function(){
-           $("#alarma_ant").val("calculando ...");
-           $("#ealarmas").removeClass("has-error");
-          //  alert($(this).val()); //
 
-           $.post("../pages/proceso/ajax_alarmas.php",
-           {
-               alarmas:$(this).val(),
-               perfil:$("#perfil").val()
-           },
-           function(data){
-               // asigna el valor
-                var res = data.split("|",3);
-                $("#alarma_ant").val(res[1]);
-                $("#dif_alarmas").val(res[2]);
-                $("#dif_alarmasd").val(res[2]);
+      $("#alarmas").change(function(){
+         $("#dif_alarmas").val(parseFloat($("#alarmas").val()) - parseFloat($("#alarma_ant").val()));
+         $("#dif_alarmasd").val(parseFloat($("#alarmas").val()) - parseFloat($("#alarma_ant").val()));
+         n1 = $("#dif_alarmas").val();
+         n2 = $("#palarmas").val();
+         $("#ealarmas").removeClass("has-error");
+         if (parseFloat($("#alarmas").val()) - parseFloat($("#alarma_ant").val()) > parseFloat(n2)) {
+            // alert('Si '+' '+n1+' > '+n2+'');
+             $("#ealarmas").addClass("has-error");
+         } else {
+            // alert('No '+' '+n1+' < '+n2+'');
+             $("#ealarmas").removeClass("has-error");
+         }
+      });
 
-                if (res[2] > $("#palarmas").val()) {
-                  $("#ealarmas").addClass("has-error");
-                  alert('Si '+' '+$("#dif_alarmas").val()+' > '+$("#palarmas").val());
-                } else {
-                  $("#ealarmas").removeClass("has-error");
-                  alert('No '+' '+res[2]+' > '+$("#palarmas").val());
-                }
-           })
-        });
-
-        $("#eventos").change(function(){
-          $("#evento_ant").val("calculando ...");
-          $("#eeventos").removeClass("has-error");
-         //  alert($(this).val()); //
-
-          $.post("../pages/proceso/ajax_eventos.php",
-          {
-              eventos:$(this).val(),
-              perfil:$("#perfil").val()
-          },
-          function(data){
-              // asigna el valor
-               var res = data.split("|",3);
-               $("#evento_ant").val(res[1]);
-               $("#dif_eventos").val(res[2]);
-               $("#dif_eventosd").val(res[2]);
-
-               if (res[2] > $("#peventos").val()) {
-                 $("#eeventos").addClass("has-error");
-                 alert('Si '+' '+$("#dif_eventos").val()+' > '+$("#peventos").val());
-               } else {
-                 $("#eeventos").removeClass("has-error");
-                 alert('No '+' '+res[2]+' > '+$("#peventos").val());
-               }
-          })
-        });
+      $("#eventos").change(function(){
+         $("#dif_eventos").val(parseFloat($("#eventos").val()) - parseFloat($("#evento_ant").val()));
+         $("#dif_eventosd").val(parseFloat($("#eventos").val()) - parseFloat($("#evento_ant").val()));
+         n1 = $("#dif_eventos").val();
+         n2 = $("#peventos").val();
+         $("#eeventos").removeClass("has-error");
+         if (parseFloat($("#eventos").val()) - parseFloat($("#evento_ant").val()) > parseFloat(n2)) {
+            // alert('Si '+' '+n1+' > '+n2+'');
+             $("#eeventos").addClass("has-error");
+         } else {
+            // alert('No '+' '+n1+' < '+n2+'');
+             $("#eeventos").removeClass("has-error");
+         }
+      });
 
         $("#traffic_mb").change(function(){
+           n1 = $("#traffic_mb").val();
+           n2 = $("#ptraffic_mb").val();
            $("#etraffic_mb").removeClass("has-error");
-           if ($("#traffic_mb").val() > $("#ptraffic_mb").val()) {
+           if (parseFloat(n1) > parseFloat(n2)) {
+               //alert('Si '+' '+n1+' > '+n2+'');
                $("#etraffic_mb").addClass("has-error");
            } else {
+               //alert('Si '+' '+n1+' < '+n2+'');
                $("#etraffic_mb").removeClass("has-error");
            }
-
         });
 
         $("#flows").change(function(){
+           n1 = $("#flows").val();
+           n2 = $("#pflows").val();
            $("#eflows").removeClass("has-error");
-           if ($("#flows").val() > $("#pflows").val()) {
+          if (parseFloat(n1) > parseFloat(n2)) {
+               //alert('Si '+' '+n1+' > '+n2+'');
                $("#eflows").addClass("has-error");
            } else {
+               //alert('Si '+' '+n1+' < '+n2+'');
                $("#eflows").removeClass("has-error");
            }
-
         });
 
         $("#pckets").change(function(){
-           $("#epckets").removeClass("has-error");
-           if ($("#pckets").val() > $("#ppckets").val()) {
-               $("#epckets").addClass("has-error");
-           } else {
-               $("#epckets").removeClass("has-error");
-           }
-
+          n1 = $("#pckets").val();
+          n2 = $("#ppckets").val();
+          $("#epckets").removeClass("has-error");
+          if (parseFloat(n1) > parseFloat(n2)) {
+              //alert('Si '+' '+n1+' > '+n2+'');
+              $("#epckets").addClass("has-error");
+          } else {
+              //alert('Si '+' '+n1+' < '+n2+'');
+              $("#epckets").removeClass("has-error");
+          }
         });
 
-        $("#perfil").change(function(){
-           //$("#telefono_docs").val("calculando ...");
-           // alert($(this).val()); //
-           $.post("../pages/proceso/ajax_parametros.php",
-           {
-               perfil:$(this).val()
-           },
-           function(data){
-               // asigna el valor
-                var res = data.split("|",7);
-                $("#palarmas").val(res[0]);
-                $("#peventos").val(res[1]);
-                $("#ptraffic_mb").val(res[2]);
-                $("#pflows").val(res[3]);
-                $("#ppckets").val(res[4]);
-                $("#telefono_docs").val(res[5]);
-                $("#email_docs").val(res[6]);
-               // reemplaza el objeto completo
-               //$("#fecha_cobro").replaceWith(data);
-           })
-        });
     })
 </script>

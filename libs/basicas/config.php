@@ -27,8 +27,8 @@ $sql_host           = "localhost";	// Host, nombre del servidor o IP del servido
 $sql_db             = "insayd_cyber";	//impulsar_gescon Base de datos que se usario
 $sql_usuario        = "root";	 	// Usuario de Mysql
 $sql_pass           = "javirala";     // contrasenia de Mysql
-$ap_nombre_ct       = "TSE 1.0 - Local";	// Nombre de la aplicación Corto <i class='fa fa-key'></i>
-$ap_nombre_lg       = "<i class='fa fa-key'></i> TSE 1.0 - Local";	// Nombre de la aplicación Largo
+$ap_nombre_ct       = "CyberSeg 1.0 - Local";	// Nombre de la aplicación Corto <i class='fa fa-key'></i>
+$ap_nombre_lg       = "<i class='fa fa-key'></i> CyberSeg 1.0 - Local";	// Nombre de la aplicación Largo
 //$entorno            = 1;  // 1 / 0
 // Desarrollo insayd.com ------
 //$sql_db           = "insayd_cyber";	//impulsar_gescon Base de datos que se usario
