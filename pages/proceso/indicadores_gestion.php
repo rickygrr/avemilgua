@@ -142,8 +142,8 @@
                         <?php echo $mensaje3; ?>
                     </p>
                     <div class="btn-group">
-                        <a href="index.php?p=proceso/indicadores_edit.php&perfil=<?php echo $perfil; ?>" class="btn btn-warning"><i class="fa fa-plus-circle"></i> Ingresar nuevo indicador</a>
-
+                      <!--  <a href="index.php?p=proceso/indicadores_edit.php&perfil=<?php echo $perfil; ?>" class="btn btn-warning"><i class="fa fa-plus-circle"></i> Ingresar nuevo indicador</a>-->
+                        <a href="index.php?p=proceso/indicadores_go.php&perfil=<?php echo $perfil; ?>" class="btn btn-warning"><i class="fa fa-plus-circle"></i> Ingresar nuevo indicador</a>
                     </div>
                 </div>
             </div>

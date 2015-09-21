@@ -200,7 +200,7 @@
                     <label for="seccion" class="col-sm-2 control-label">Perfil</label>
                     <input type="hidden" class="form-control" id="perfil" placeholder="0" name="perfil" value="<?php echo $perfil; ?>"  >
                             <div class="col-sm-4">
-                                <select id="perfil2" class="form-control col-md-12" name="perfil2" disabled="">
+                                <select id="perfil2" class="form-control col-md-12" name="perfil2" disabled="" >
                                     <?php
                                         $sql2="SELECT co.id,
                                                       co.nombre,
