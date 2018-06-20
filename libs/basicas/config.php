@@ -15,7 +15,7 @@ global $ap_nombre_ct; $ap_nombre_lg; $ap_ico; $ap_logo_login; $ap_logo_interno; 
 global $entorno;
 
 // Usuarios ------
-$usuarios_sesion    = "cyberseg";	// Nombre de la session (puede dejar este mismo)
+$usuarios_sesion    = "pdvtiton";	// Nombre de la session (puede dejar este mismo)
                                         // Cambiar en archivo de capcha para que funcione!
 $sql_tabla          = "ap_usuarios";	// Nombre de la tabla que contendra los datos de los usuarios
 $sql_tabla2         = "ap_instituciones";	// Nombre de la tabla que contendra los datos de los usuarios
@@ -24,11 +24,11 @@ $registros          = 25;  		// cantidad de registros a mostrar por defecto
 $db_motor           = "mysql";	// Tipo de Servidor de Base de datos (mysql,postgresql,oracle,etc).
 $sql_host           = "localhost";	// Host, nombre del servidor o IP del servidor de base de datos.
 // Desarrollo local------
-$sql_db             = "insayd_cyber";	//impulsar_gescon Base de datos que se usario
+$sql_db             = "test";	//impulsar_gescon Base de datos que se usario
 $sql_usuario        = "root";	 	// Usuario de Mysql
-$sql_pass           = "javirala";     // contrasenia de Mysql
-$ap_nombre_ct       = "CyberSeg 1.0 - Local";	// Nombre de la aplicación Corto <i class='fa fa-key'></i>
-$ap_nombre_lg       = "<i class='fa fa-key'></i> CyberSeg 1.0 - Local";	// Nombre de la aplicación Largo
+$sql_pass           = "R1icardoG21998";     // contrasenia de Mysql
+$ap_nombre_ct       = "AVEMILGUA - Local";	// Nombre de la aplicación Corto <i class='fa fa-key'></i>
+$ap_nombre_lg       = "<i class='fa fa-key'></i> PDV Titon - Local";	// Nombre de la aplicación Largo
 //$entorno            = 1;  // 1 / 0
 // Desarrollo insayd.com ------
 //$sql_db           = "insayd_cyber";	//impulsar_gescon Base de datos que se usario
@@ -57,7 +57,7 @@ $ap_servidor_mail   = "mail.crm.e.gt";                    //Servidor de mail;
 $ap_puerto_mail     = 2525;                                //Puerto de envio de mail;
 $ap_wordwrap_mail   = 50;                                 // Set word wrap to 50 characters
 $ap_ishtml_mail     = true;                               // Set email format to HTML
-$ap_error_mail      = "El mensaje no pudo ser enviado, llame al +502.41786953";   //Mensaje si ocurre error
+$ap_error_mail      = "El mensaje no pudo ser enviado, llame al +502.41786940";   //Mensaje si ocurre error
 
 // Generales de Aplicación -------
 //$ap_nombre_ct       = "Apolo - ig3.0";	// Nombre de la aplicación Corto <i class='fa fa-key'></i>

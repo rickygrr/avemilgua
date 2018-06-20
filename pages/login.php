@@ -1,7 +1,7 @@
-<?php 
+<?php
     include('../libs/basicas/config.php');
     include('../libs/autentificador/aut_mensaje_error.inc.php');
-    global $s; 
+    global $s;
     global $errores;
     // le damos un nobre a la sesion (por si quisieramos identificarla)
     session_name($usuarios_sesion);
@@ -22,7 +22,7 @@
 
     <title><?php echo $ap_nombre_ct; ?> | Ingreso</title>
     <link rel="shortcut icon" href="../<?php echo $ap_ico; ?>" type="image/png" />
-    
+
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -51,7 +51,10 @@
                 <div class="login-panel panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title text-center img-responsive">
+                        <!--
                             <a href="../index.php"><img src="../<?php echo $ap_logo_login; ?>" alt="<?php echo $ap_alt_logo; ?>" height="" /></a> 3.0
+                        -->
+                        <a href="../index.php"><?php echo $ap_nombre_ct; ?></a> 1.0
                         </h3>
                     </div>
                     <div class="panel-body">
@@ -82,7 +85,7 @@
                                 <!--
                                 <div class="checkbox">
                                     <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Recordarme 
+                                        <input name="remember" type="checkbox" value="Remember Me">Recordarme
                                     </label>
                                 </div>
                                 -->
