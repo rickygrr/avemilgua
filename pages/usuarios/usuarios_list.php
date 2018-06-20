@@ -1,14 +1,14 @@
 <?php
-     
+
     //Definición de Variables locales
-    global $id; $nick; $password; $nombre; $apellido; $email; $celular; $cargo; $permiso; $institucion; 
+    global $id; $nick; $password; $nombre; $apellido; $email; $celular; $cargo; $permiso; $institucion;
     global $foto; $nacimiento; $genero; $dpi; $nit; $direccion; $tipoper; $codigo; $calendario1; $calendario2;
     global $observaciones; $actividad; $estatus;
-    
+
     // Consulta SQL
     // echo " [Where]" . $s_where . "[FIN]";
     $sql1 = "SELECT u.id,
-					u.nick,	    		
+					u.nick,
     				u.nombre,
                                 u.nombre2,
 		    		u.apellido,
@@ -39,7 +39,7 @@
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12">
-            
+
 <?php
 if (!$resp1) { // Error en la ejecución del query
     echo "<div class='alert alert-block alert-danger fade in'>
@@ -71,15 +71,15 @@ if (!$resp1) { // Error en la ejecución del query
                                 <tr>
                                     <th>Nombre</th>
                                     <th class="hidden-xs hidden-sm">Usuario (e-Mail)</th>
-                                    <th class="hidden-xs hidden-sm">Emp.</th>  
+                                    <th class="hidden-xs hidden-sm">Emp.</th>
                                     <th class="hidden-xs">Cargo</th>
-                                    <th class="hidden-xs">Permiso</th> 
-                                    <th class="hidden-xs">Est.</th> 
+                                    <th class="hidden-xs">Permiso</th>
+                                    <th class="hidden-xs">Est.</th>
                                     <th class=""><i class="fa fa-cogs"></i></th>
                                 </tr>
                             </thead>
                             <tbody>
-<?php 
+<?php
     while($row=mysql_fetch_assoc($resp1)){
         print "<tr class=''>";
         print "  <td>".utf8_encode($row['nombre'])." ".utf8_encode($row['nombre2'])." ".utf8_encode($row['apellido'])." ".utf8_encode($row['apellido2'])." ".utf8_encode($row['apellido3'])."</td>";
@@ -90,7 +90,7 @@ if (!$resp1) { // Error en la ejecución del query
         print "  <td class='hidden-xs' nowrap>".utf8_encode($row['nestatus'])."</td>";
         print "  <td class='center' align='center' nowrap>
                     <a href='index.php?p=usuarios/usuarios_edit.php&id=".$row['id']."' title='Editar Usuario' ><button class='btn btn-xs btn-default'><i class='fa fa-pencil'></i></button></a>
-                    <a href='index.php?p=usuarios/usuarios_gestion.php&id=".$row['id']."&btn=Borrar' title='Borrar Usuario' ><button class='btn btn-xs btn-default'><i class='fa fa-times'></i></button></a> 
+                    <a href='index.php?p=usuarios/usuarios_gestion.php&id=".$row['id']."&btn=Borrar' title='Borrar Usuario' ><button class='btn btn-xs btn-default'><i class='fa fa-times'></i></button></a>
                  </td>";
         print "</tr>";
     }
@@ -148,7 +148,7 @@ $(document).ready(function() {
             },
         }
     });
-    
+
 });
 
 $(document).ready(function() {
@@ -156,7 +156,7 @@ $(document).ready(function() {
     new $.fn.dataTable.FixedHeader( t1, {
         bottom: true
     } );
- 
+
  //   var t2 = $('table.display').eq(1).DataTable();
  //   new $.fn.dataTable.FixedHeader( t2, {
  //       bottom: true

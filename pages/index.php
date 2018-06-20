@@ -1,7 +1,7 @@
 <?php
     include_once("../libs/basicas/config.php");
-    include_once('../libs/autentificador/aut.php'); 
-    
+    include_once('../libs/autentificador/aut.php');
+
     include_once 'panel/i_globales.php';
 ?>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
 
 <body>
     <div id="wrapper" class="">
-        
+
         <!-- Navigation -->
         <nav class="navbar navbar-default keyco-header navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -38,18 +38,18 @@
             <?php include_once 'panel/i_menu.php'; ?>
             <!-- /.navbar-static-side -->
         </nav>
-        
+
 <?php
     if (isset($_REQUEST["p"])) {
-        
+
         include_once ''.$_REQUEST["p"];
-                
+
     } else {
        // include_once 'panel/intro.php';
         include_once 'panel/info.php';
     }
 ?>
-    
+
     </div>
     <!-- /#wrapper -->
 </body>

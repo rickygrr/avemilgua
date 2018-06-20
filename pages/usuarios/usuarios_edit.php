@@ -5,89 +5,89 @@
     global $foto; $nacimiento; $genero; $dpi; $nit; $direccion; $tipoper; $codigo; $calendario1; $calendario2;
     global $observaciones; $actividad; $estatus; $nombre2; $apellido2; $apellido3; $igss; $irtra; $licencia; $licencia_tipo; $contrato;
     global $estado_civil; $conyugue; $unidad; $seccion; $salario_base; $bono_incentivo; $bono_14; $refa; $refafa;
-    
+
     //Inicialización de Variables locales
     $id = '';
-    $nick = ''; 
-    $password = ''; 
-    $nombre = ''; 
-    $apellido = ''; 
-    $email = ''; 
-    $celular = ''; 
-    $cargo = ''; 
-    $permiso = ''; 
-    $institucion = ''; 
+    $nick = '';
+    $password = '';
+    $nombre = '';
+    $apellido = '';
+    $email = '';
+    $celular = '';
+    $cargo = '';
+    $permiso = '';
+    $institucion = '';
     $condominio = '';
-    $foto = ''; 
-    $nacimiento = ''; 
-    $genero = ''; 
-    $dpi = ''; 
-    $nit = ''; 
-    $direccion = ''; 
-    $tipoper = ''; 
-    $codigo = ''; 
-    $calendario1 = ''; 
+    $foto = '';
+    $nacimiento = '';
+    $genero = '';
+    $dpi = '';
+    $nit = '';
+    $direccion = '';
+    $tipoper = '';
+    $codigo = '';
+    $calendario1 = '';
     $calendario2 = '';
-    $observaciones = ''; 
-    $actividad = ''; 
+    $observaciones = '';
+    $actividad = '';
     $estatus = '';
-    $nombre2 = ''; 
-    $apellido2 = ''; 
-    $apellido3 = ''; 
-    $igss = ''; 
-    $irtra = ''; 
-    $licencia = ''; 
+    $nombre2 = '';
+    $apellido2 = '';
+    $apellido3 = '';
+    $igss = '';
+    $irtra = '';
+    $licencia = '';
     $licencia_tipo = '';
     $contrato = '';
-    $estado_civil = ''; 
-    $conyugue = ''; 
-    $unidad = ''; 
-    $seccion = ''; 
-    $salario_base = ''; 
-    $bono_incentivo = ''; 
+    $estado_civil = '';
+    $conyugue = '';
+    $unidad = '';
+    $seccion = '';
+    $salario_base = '';
+    $bono_incentivo = '';
     $bono_14 = '';
     $refa = '';
     $refafa = '';
-    
+
     // Asignar el valor que viene en el request a variables
-    if (!$id) { $id  = isset_or('id', '0'); };  
-    if (!$nick) { $nick  = isset_or('nick', ''); }; 
-    if (!$password) { $password  = isset_or('password', ''); }; 
-    if (!$nombre) { $nombre  = isset_or('nombre', ''); }; 
-    if (!$apellido) { $apellido  = isset_or('apellido', ''); }; 
-    if (!$email) { $email  = isset_or('email', ''); }; 
-    if (!$celular) { $celular  = isset_or('celular', ''); }; 
-    if (!$cargo) { $cargo  = isset_or('cargo', ''); }; 
-    if (!$permiso) { $permiso  = isset_or('permiso', '0'); }; 
-    if (!$institucion) { $institucion  = isset_or('institucion', '0'); }; 
-    if (!$condominio) { $condominio  = isset_or('condominio', ''); }; 
-    if (!$foto) { $foto  = isset_or('foto', ''); }; 
-    if (!$nacimiento) { $nacimiento  = isset_or('nacimiento', ''); }; 
-    if (!$genero) { $genero  = isset_or('genero', ''); }; 
-    if (!$dpi) { $dpi  = isset_or('dpi', ''); }; 
-    if (!$nit) { $nit  = isset_or('nit', ''); }; 
-    if (!$direccion) { $direccion  = isset_or('direccion', ''); }; 
-    if (!$tipoper) { $tipoper  = isset_or('tipoper', '0'); }; 
-    if (!$codigo) { $codigo  = isset_or('codigo', ''); }; 
-    if (!$calendario1) { $calendario1  = isset_or('calendario1', ''); }; 
+    if (!$id) { $id  = isset_or('id', '0'); };
+    if (!$nick) { $nick  = isset_or('nick', ''); };
+    if (!$password) { $password  = isset_or('password', ''); };
+    if (!$nombre) { $nombre  = isset_or('nombre', ''); };
+    if (!$apellido) { $apellido  = isset_or('apellido', ''); };
+    if (!$email) { $email  = isset_or('email', ''); };
+    if (!$celular) { $celular  = isset_or('celular', ''); };
+    if (!$cargo) { $cargo  = isset_or('cargo', ''); };
+    if (!$permiso) { $permiso  = isset_or('permiso', '0'); };
+    if (!$institucion) { $institucion  = isset_or('institucion', '0'); };
+    if (!$condominio) { $condominio  = isset_or('condominio', ''); };
+    if (!$foto) { $foto  = isset_or('foto', ''); };
+    if (!$nacimiento) { $nacimiento  = isset_or('nacimiento', ''); };
+    if (!$genero) { $genero  = isset_or('genero', ''); };
+    if (!$dpi) { $dpi  = isset_or('dpi', ''); };
+    if (!$nit) { $nit  = isset_or('nit', ''); };
+    if (!$direccion) { $direccion  = isset_or('direccion', ''); };
+    if (!$tipoper) { $tipoper  = isset_or('tipoper', '0'); };
+    if (!$codigo) { $codigo  = isset_or('codigo', ''); };
+    if (!$calendario1) { $calendario1  = isset_or('calendario1', ''); };
     if (!$calendario2) { $calendario2  = isset_or('calendario2', ''); };
-    if (!$observaciones) { $observaciones  = isset_or('observaciones', ''); }; 
-    if (!$actividad) { $actividad  = isset_or('actividad', '0'); }; 
+    if (!$observaciones) { $observaciones  = isset_or('observaciones', ''); };
+    if (!$actividad) { $actividad  = isset_or('actividad', '0'); };
     if (!$estatus) { $estatus  = isset_or('estatus', '0'); };
-    if (!$nombre2) { $nombre2 = isset_or('nombre2', '0'); }; 
-    if (!$apellido2) { $apellido2 = isset_or('apellido2', '0'); }; 
-    if (!$apellido3) { $apellido3 = isset_or('apellido3', '0'); }; 
-    if (!$igss) { $igss = isset_or('igss', '0'); }; 
-    if (!$irtra) { $irtra = isset_or('irtra', '0'); }; 
-    if (!$licencia) { $licencia = isset_or('licencia', '0'); }; 
+    if (!$nombre2) { $nombre2 = isset_or('nombre2', '0'); };
+    if (!$apellido2) { $apellido2 = isset_or('apellido2', '0'); };
+    if (!$apellido3) { $apellido3 = isset_or('apellido3', '0'); };
+    if (!$igss) { $igss = isset_or('igss', '0'); };
+    if (!$irtra) { $irtra = isset_or('irtra', '0'); };
+    if (!$licencia) { $licencia = isset_or('licencia', '0'); };
     if (!$licencia_tipo) { $licencia_tipo = isset_or('licencia_tipo', '0'); };
     if (!$contrato) { $contrato = isset_or('contrato', ''); };
-    if (!$estado_civil) { $estado_civil = isset_or('estado_civil', ''); }; 
-    if (!$conyugue) { $conyugue = isset_or('conyugue', ''); }; 
-    if (!$unidad) { $unidad = isset_or('unidad', ''); }; 
-    if (!$seccion) { $seccion = isset_or('seccion', ''); }; 
-    if (!$salario_base) { $salario_base = isset_or('salario_base', ''); }; 
-    if (!$bono_incentivo) { $bono_incentivo = isset_or('bono_incentivo', ''); }; 
+    if (!$estado_civil) { $estado_civil = isset_or('estado_civil', ''); };
+    if (!$conyugue) { $conyugue = isset_or('conyugue', ''); };
+    if (!$unidad) { $unidad = isset_or('unidad', ''); };
+    if (!$seccion) { $seccion = isset_or('seccion', ''); };
+    if (!$salario_base) { $salario_base = isset_or('salario_base', ''); };
+    if (!$bono_incentivo) { $bono_incentivo = isset_or('bono_incentivo', ''); };
     if (!$bono_14) { $bono_14 = isset_or('bono_14', ''); };
 
 ?>
@@ -103,8 +103,10 @@
         </div>
         <!-- /.row -->
 
+<!-- ******************************************************* -->
+
 <?php
-        
+
     //Programacion de Funcionalidad para mostrar datos de la pagina
     if ($id == "0" or $id == "") {
 		$var_where1 = " ";
@@ -112,58 +114,57 @@
                 $estatus = '1';
                 $permiso = '5';
 	} else {
-		$var_where1 = " AND u.id = '" . $id . "' ";
-	//	$var_where1 = $var_where1 . " AND u.institucion in ('1', '" . $_SESSION['usuario_institucion'] . "')";
-    
+		$var_where1 = " AND u.id = '" . $id . "' ";	//	$var_where1 = $var_where1 . " AND u.institucion in ('1', '" . $_SESSION['usuario_institucion'] . "')";
+
 	    // Consulta SQL
 	    // echo " [Where]" . $s_where . "[FIN]";
 	    $sql1 = "SELECT u.id,
-					    u.nick, 
-					    u.password, 
-					    u.nombre, 
-					    u.apellido, 
-					    u.email, 
-					    u.celular, 
-					    u.cargo, 
+					    u.nick,
+					    u.password,
+					    u.nombre,
+					    u.apellido,
+					    u.email,
+					    u.celular,
+					    u.cargo,
 					    u.permiso,
 					    u.institucion,
                                             u.condominios,
-					    u.foto, 
-					    u.nacimiento, 
-					    u.genero, 
-					    u.dpi, 
-					    u.nit, 
-					    u.direccion, 
-					    u.tipoper, 
-					    u.codigo, 
-					    u.calendario1, 
+					    u.foto,
+					    u.nacimiento,
+					    u.genero,
+					    u.dpi,
+					    u.nit,
+					    u.direccion,
+					    u.tipoper,
+					    u.codigo,
+					    u.calendario1,
 					    u.calendario2,
-					    u.observaciones, 
-					    u.actividad, 
+					    u.observaciones,
+					    u.actividad,
 					    u.estatus,
-                                            u.nombre2, 
-                                            u.apellido2, 
-                                            u.apellido3, 
-                                            u.igss, 
-                                            u.irtra, 
-                                            u.licencia, 
+                                            u.nombre2,
+                                            u.apellido2,
+                                            u.apellido3,
+                                            u.igss,
+                                            u.irtra,
+                                            u.licencia,
                                             u.licencia_tipo,
                                             u.contrato,
-                                            u.estado_civil, 
-                                            u.conyugue, 
-                                            u.unidad, 
-                                            u.seccion, 
+                                            u.estado_civil,
+                                            u.conyugue,
+                                            u.unidad,
+                                            u.seccion,
                                             u.salario_base,
-                                            u.bono_incentivo, 
+                                            u.bono_incentivo,
                                             u.bono_14
 			    from ap_usuarios u
-			    WHERE 1=1 
+			    WHERE 1=1
 			    " . $var_where1 . "
 			    order by u.id +0";
 	    //	echo "<br>[SQL] ".$sql. " [Fin SQL]";
 	    $resp1 = mysql_query($sql1);
-	    
- 
+
+
 	    if (!$resp1) { // Error en la ejecución del query
 			echo "<div class='alert alert-block alert-danger fade in'>
 					<a class='close' data-dismiss='alert' href='#' aria-hidden='true'>&times;</a>
@@ -180,43 +181,43 @@
 	   		// Asignación de valores en variables
 			while($row1=mysql_fetch_assoc($resp1)){
                             $id = $row1['id'];
-			    $nick = utf8_encode($row1['nick']); 
-			    $password = utf8_encode($row1['password']); 
-			    $nombre = utf8_encode($row1['nombre']); 
-			    $apellido = utf8_encode($row1['apellido']); 
-			    $email = utf8_encode($row1['email']); 
-			    $celular = utf8_encode($row1['celular']); 
-			    $cargo = utf8_encode($row1['cargo']); 
-			    $permiso = $row1['permiso']; 
-			    $institucion = $row1['institucion']; 
+			    $nick = utf8_encode($row1['nick']);
+			    $password = utf8_encode($row1['password']);
+			    $nombre = utf8_encode($row1['nombre']);
+			    $apellido = utf8_encode($row1['apellido']);
+			    $email = utf8_encode($row1['email']);
+			    $celular = utf8_encode($row1['celular']);
+			    $cargo = utf8_encode($row1['cargo']);
+			    $permiso = $row1['permiso'];
+			    $institucion = $row1['institucion'];
                             $condominio = $row1['condominios'];
-			    $foto = utf8_encode($row1['foto']); 
-			    $nacimiento = $row1['nacimiento']; 
-			    $genero = $row1['genero']; 
-			    $dpi = $row1['dpi']; 
-			    $nit = $row1['nit']; 
-			    $direccion = utf8_encode($row1['direccion']); 
-			    $tipoper = $row1['tipoper']; 
-			    $codigo = utf8_encode($row1['codigo']); 
-			    $calendario1 = utf8_encode($row1['calendario1']); 
+			    $foto = utf8_encode($row1['foto']);
+			    $nacimiento = $row1['nacimiento'];
+			    $genero = $row1['genero'];
+			    $dpi = $row1['dpi'];
+			    $nit = $row1['nit'];
+			    $direccion = utf8_encode($row1['direccion']);
+			    $tipoper = $row1['tipoper'];
+			    $codigo = utf8_encode($row1['codigo']);
+			    $calendario1 = utf8_encode($row1['calendario1']);
 			    $calendario2 = utf8_encode($row1['calendario2']);
-			    $observaciones = utf8_encode($row1['observaciones']); 
-			    $actividad = $row1['actividad']; 
+			    $observaciones = utf8_encode($row1['observaciones']);
+			    $actividad = $row1['actividad'];
 			    $estatus = $row1['estatus'];
-                            $nombre2 = $row1['nombre2']; 
-                            $apellido2 = $row1['apellido2']; 
-                            $apellido3 = $row1['apellido3']; 
-                            $igss = $row1['igss']; 
-                            $irtra = $row1['irtra']; 
-                            $licencia = $row1['licencia']; 
+                            $nombre2 = $row1['nombre2'];
+                            $apellido2 = $row1['apellido2'];
+                            $apellido3 = $row1['apellido3'];
+                            $igss = $row1['igss'];
+                            $irtra = $row1['irtra'];
+                            $licencia = $row1['licencia'];
                             $licencia_tipo = $row1['licencia_tipo'];
                             $contrato = $row1['contrato'];
-                            $estado_civil = $row1['estado_civil']; 
-                            $conyugue = utf8_encode($row1['conyugue']); 
-                            $unidad = $row1['unidad']; 
-                            $seccion = $row1['seccion']; 
+                            $estado_civil = $row1['estado_civil'];
+                            $conyugue = utf8_encode($row1['conyugue']);
+                            $unidad = $row1['unidad'];
+                            $seccion = $row1['seccion'];
                             $salario_base = $row1['salario_base'];
-                            $bono_incentivo = $row1['bono_incentivo']; 
+                            $bono_incentivo = $row1['bono_incentivo'];
                             $bono_14 = $row1['bono_14'];
 			};
 			mysql_free_result($resp1);
@@ -224,6 +225,8 @@
 	};
     // end if mas adelante
 ?>
+
+<!-- ******************************************************* -->
 
         <!-- BOX TABS -->
         <div class="row">
@@ -234,7 +237,7 @@
                     </div>
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" action="index.php" method="post">
-            
+
             <div class="tabbable header-tabs">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#box_tab1" data-toggle="tab"><i class="fa fa-shield"></i> <span class="hidden-inline-mobile">Usuario</span></a></li>
@@ -257,12 +260,12 @@
                                     <?php
                                         $sql2="SELECT  id , nombre
                                                 FROM ap_catalogos
-                                                WHERE tipo_catalogo = 2 AND institucion = 1 
+                                                WHERE tipo_catalogo = 2 AND institucion = 1
                                                 ORDER BY id";
                                         $resp2 = mysql_query($sql2);
                                     ?>
                                     <option value="" selected="selected" >Seleccionar</option>
-                                    <?php 
+                                    <?php
                                         while($row2=mysql_fetch_assoc($resp2)){
                                             print '<option value="'.$row2['id'].'" ';
                                             if ($permiso == $row2['id']) { print ' selected="selected" '; };
@@ -277,12 +280,12 @@
                                     <?php
                                         $sql2="SELECT  id , nombre
                                                 FROM ap_catalogos
-                                                WHERE tipo_catalogo = 3 AND institucion = 1 
+                                                WHERE tipo_catalogo = 3 AND institucion = 1
                                                 ORDER BY id";
                                         $resp2 = mysql_query($sql2);
                                     ?>
                                     <option value="" selected="selected" >Seleccionar</option>
-                                    <?php 
+                                    <?php
                                         while($row2=mysql_fetch_assoc($resp2)){
                                             print '<option value="'.$row2['id'].'" ';
                                             if ($estatus == $row2['id']) { print ' selected="selected" '; };
@@ -372,12 +375,12 @@
                                     <?php
                                         $sql2="SELECT  id, nombre, comodin
                                                 FROM ap_catalogos
-                                                WHERE tipo_catalogo = 6 AND institucion = 1 
+                                                WHERE tipo_catalogo = 6 AND institucion = 1
                                                 ORDER BY id";
                                         $resp2 = mysql_query($sql2);
                                     ?>
                                     <option value="" selected="selected" >Seleccionar</option>
-                                    <?php 
+                                    <?php
                                         while($row2=mysql_fetch_assoc($resp2)){
                                             print '<option value="'.$row2['comodin'].'" ';
                                             if ($genero == $row2['comodin']) { print ' selected="selected" '; };
@@ -394,12 +397,12 @@
                                     <?php
                                         $sql2="SELECT  id, nombre, comodin
                                                 FROM ap_catalogos
-                                                WHERE tipo_catalogo = 15 AND institucion = 1 
+                                                WHERE tipo_catalogo = 15 AND institucion = 1
                                                 ORDER BY id";
                                         $resp2 = mysql_query($sql2);
                                     ?>
                                     <option value="" selected="selected" >Seleccionar</option>
-                                    <?php 
+                                    <?php
                                         while($row2=mysql_fetch_assoc($resp2)){
                                             print '<option value="'.$row2['id'].'" ';
                                             if ($estado_civil == $row2['id']) { print ' selected="selected" '; };
@@ -451,12 +454,12 @@
                                     <?php
                                         $sql2="SELECT  id , nombre
                                                     FROM ap_instituciones
-                                                    WHERE estatus = 1 
+                                                    WHERE estatus = 1
                                                     ORDER BY id";
                                         $resp2 = mysql_query($sql2);
                                     ?>
                                     <option value="" selected="selected" >Seleccionar</option>
-                                    <?php 
+                                    <?php
                                         while($row2=mysql_fetch_assoc($resp2)){
                                             print '<option value="'.$row2['id'].'" ';
                                             if ($institucion == $row2['id']) { print ' selected="selected" '; };
@@ -469,26 +472,26 @@
            } else {
                 $plvalidarinst = " AND co.institucion = " . $_SESSION['usuario_institucion'] . " ";
                 echo "<input class='text' name='institucion' id='institucion' type='hidden' value='" . $_SESSION['usuario_institucion'] . "'/>";
-           }; 
+           };
     ?>
                     <label for="seccion" class="col-sm-2 control-label">Perfil de Aplicacion</label>
                             <div class="col-sm-4">
                                 <select id="condominio" class="form-control col-md-12" name="condominio">
                                     <?php
-                                        $sql2="SELECT co.id, 
-                                                      co.nombre, 
+                                        $sql2="SELECT co.id,
+                                                      co.nombre,
                                                       co.institucion,
                                                       (select i.nombre from ap_instituciones i where i.id = co.institucion) as ninstitucion
                                                 FROM ap_perfil co
-                                                WHERE 1=1 
+                                                WHERE 1=1
                                                 ".$plvalidarinst."
                                                 ORDER BY co.institucion, co.id";
                                         $resp2 = mysql_query($sql2);
                                     ?>
                                     <option value="" selected="selected" >Seleccionar</option>
-                                    <?php 
+                                    <?php
                                         while($row2=mysql_fetch_assoc($resp2)){
-                                            if ($refa == '') { 
+                                            if ($refa == '') {
                                                 echo "<optgroup label='".utf8_encode($row2['ninstitucion'])."'>";
                                                 $refa = $row2['ninstitucion'];
                                             } elseif ($refa != $row2['ninstitucion']) {
@@ -510,12 +513,12 @@
                                     <?php
                                         $sql2="SELECT  id , nombre
                                                 FROM ap_catalogos
-                                                WHERE tipo_catalogo = 13 AND institucion = 1 
+                                                WHERE tipo_catalogo = 13 AND institucion = 1
                                                 ORDER BY id";
                                         $resp2 = mysql_query($sql2);
                                     ?>
                                     <option value="" selected="selected" >Seleccionar</option>
-                                    <?php 
+                                    <?php
                                         while($row2=mysql_fetch_assoc($resp2)){
                                             print '<option value="'.$row2['id'].'" ';
                                             if ($tipoper == $row2['id']) { print ' selected="selected" '; };
@@ -528,19 +531,19 @@
                             <div class="col-sm-4">
                                 <select id="seccion" class="form-control col-md-12" name="seccion" >
                                     <?php
-                                        $sql2="SELECT s.id, 
-                                                      s.nombre, 
+                                        $sql2="SELECT s.id,
+                                                      s.nombre,
                                                       s.unidad,
                                                       (select u.nombre from ap_unidad u where u.id = s.unidad) as nunidad
                                                 FROM ap_seccion s
-                                                WHERE 1=1 
+                                                WHERE 1=1
                                                 ORDER BY s.unidad, s.id";
                                         $resp2 = mysql_query($sql2);
                                     ?>
                                     <option value="" selected="selected" >Seleccionar</option>
-                                    <?php 
+                                    <?php
                                         while($row2=mysql_fetch_assoc($resp2)){
-                                            if ($refa == '') { 
+                                            if ($refa == '') {
                                                 echo "<optgroup label='".utf8_encode($row2['nunidad'])."'>";
                                                 $refa = $row2['nunidad'];
                                             } elseif ($refa != $row2['nunidad']) {
@@ -562,12 +565,12 @@
                                     <?php
                                         $sql2="SELECT  id , nombre
                                                 FROM ap_catalogos
-                                                WHERE tipo_catalogo = 14 AND institucion = 1 
+                                                WHERE tipo_catalogo = 14 AND institucion = 1
                                                 ORDER BY id";
                                         $resp2 = mysql_query($sql2);
                                     ?>
                                     <option value="" selected="selected" >Seleccionar</option>
-                                    <?php 
+                                    <?php
                                         while($row2=mysql_fetch_assoc($resp2)){
                                             print '<option value="'.$row2['id'].'" ';
                                             if ($actividad == $row2['id']) { print ' selected="selected" '; };
@@ -630,7 +633,7 @@
                                 <?php } else { ?>
                                     <button type="submit" class="btn btn-warning" value="Actualizar" name="btn" >Modificar</button>
                                     <button type="submit" class="btn btn-danger" value="Borrar" name="btn" >Borrar</button>
-                                <?php }; ?>  
+                                <?php }; ?>
                                 <button type="reset" class="btn btn-inverse" value="Cancelar">Cancelar</button>
                             </div>
                         </div>

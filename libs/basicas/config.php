@@ -24,7 +24,7 @@ $registros          = 25;  		// cantidad de registros a mostrar por defecto
 $db_motor           = "mysql";	// Tipo de Servidor de Base de datos (mysql,postgresql,oracle,etc).
 $sql_host           = "localhost";	// Host, nombre del servidor o IP del servidor de base de datos.
 // Desarrollo local------
-$sql_db             = "test";	//impulsar_gescon Base de datos que se usario
+$sql_db             = "avemilgua";	//impulsar_gescon Base de datos que se usario
 $sql_usuario        = "root";	 	// Usuario de Mysql
 $sql_pass           = "R1icardoG21998";     // contrasenia de Mysql
 $ap_nombre_ct       = "AVEMILGUA - Local";	// Nombre de la aplicación Corto <i class='fa fa-key'></i>

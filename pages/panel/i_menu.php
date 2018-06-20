@@ -32,6 +32,7 @@
                 </ul>
 
             </li>
+
             <?php }; ?>
 
             <li>
@@ -54,7 +55,7 @@
                         <li><a href="index.php?p=reportes/topten_go.php">Top 10</a></li>
                         <!--
                         <li><a href="index.php?p=soporte/sql_gestion.php&sqltext=select * from cy_topten">Top 10</a></li>
-                      -->
+                        -->
                     <?php }; ?>
                 </ul>
             </li>
@@ -115,12 +116,28 @@
                         <li><a href="index.php?p=sistema/catalogos_list.php&idtipo=2">Niveles de Usuario</a></li>
                     <?php }; ?>
                 </ul>
+
+
                 <!-- /.nav-second-level -->
             </li>
-            <?php if ($_SESSION['usuario_nivel'] == 1) { ?>
 
+            <!-- ---------------------------------------------EXTRA AVEMILGUA---------------------------------- --><?php if ($_SESSION['usuario_nivel'] <= 5) { ?>
+            <li>
+                <a href="#"><i class = "fa fa-users fa-fw"></i> AVEMILGUA <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <!-- Ahorita cualquier nivel de usuario puede accesar estas opciones -->
+                    <?php if($_SESSION['usuario_nivel'] <= 5) { ?>
+                        <li><a href="index.php?p=usuarios/av_usuarios_edit.php">Nuevo Usuario</a></li>
+                        <li><a href="index.php?p=usuarios/av_usuarios_list.php">Lista de Usuarios</a></li>
+                    <?php }; ?>
+                </ul>
+            </li>
             <?php }; ?>
+            <!-- ---------------------------------------------EXTRA AVEMILGUA---------------------------------- -->
+
             <li><a href="index.php?p=soporte/reportarfalla_go.php"><i class="fa fa-ambulance fa-fw"></i> Solicitud de Soporte</a></li>
+
+
             <li class="sidebar-search">
                 <center>
 
