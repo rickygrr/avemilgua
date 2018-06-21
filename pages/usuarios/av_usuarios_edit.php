@@ -71,7 +71,6 @@
 ?>
 <!-- HTML -->
 
-
 <!-- Page Content * -->
 <div id="page-wrapper">
     <div class="container-fluid">
@@ -155,11 +154,11 @@
                         <div class="form-group">
                             <label for="lugar_nacimiento" class="col-sm-2 control-label">Lugar de Nacimiento</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" id="lugar_nacimiento" placeholder="País" name="lugar_nacimiento" value="<?php echo $apellido; ?>">
+                                <input type="text" class="form-control" id="lugar_nacimiento" placeholder="País" name="lugar_nacimiento" value="<?php echo $lugar_nacimiento; ?>">
                             </div>
                             <label for="nacionalidad" class="col-sm-2 control-label">Nacionalidad</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" id="nacionalidad" placeholder="País" name="nacionalidad" value="<?php echo $apellido2; ?>">
+                                <input type="text" class="form-control" id="nacionalidad" placeholder="País" name="nacionalidad" value="<?php echo $nacionalidad; ?>">
                             </div>
                         </div>
                          <!-- Fecha Nacimiento/Genero -->
@@ -222,12 +221,12 @@
                         <!-- Direccion/Vecindad -->
                         <div class="form-group">
                             <label for="direccion" class="col-sm-2 control-label">Dirección</label>
-                            <div class="col-sm-6">
-                                <textarea class="form-control" rows="2" id="direccion" placeholder="Direccion" name="direccion"><?php echo $direccion; ?></textarea>
+                            <div class="col-sm-5">
+                                <textarea class="form-control" rows="2" id="direccion" placeholder="Dirección" name="direccion"><?php echo $direccion; ?></textarea>
                             </div>
                             <label for="vecindad" class="col-sm-1 control-label">Vecindad</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" id="vecindad" placeholder="Vecindad" name="vecindad" value="<?php echo $profesion; ?>">
+                                <input type="text" class="form-control" id="vecindad" placeholder="Vecindad" name="vecindad" value="<?php echo $vecindad; ?>">
                             </div>
 
                         </div>
@@ -237,21 +236,81 @@
                             <div class="col-sm-4">
                                 <input type="email" class="form-control" id="correo" placeholder="Correo" name="correo" value="<?php echo $correo; ?>">
                             </div>
-                            <label for="celular" class="col-sm-2 control-label">Celular</label>
-                            <div class="col-sm-4">
+                            <label for="celular" class="col-sm-1 control-label">Teléfono</label>
+                            <div class="col-sm-3">
                                 <input type="text" class="form-control" id="telefono" placeholder="Teléfono" name="telefono" value="<?php echo $telefono; ?>">
                             </div>
                         </div>
                     </div>
                     <!-- Carpeta 2* -->
                     <div class="tab-pane fade" id="box_tab2">
+                        <!-- Grado Militar/Compañia/Puesto-->
+                        <div class="form-group">
+                            <label for="grado_militar" class="col-sm-2 control-label">Grado Militar</label>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="grado_militar" placeholder="Grado" name="grado_militar" value="<?php echo $grado_militar; ?>">
+                            </div>
+                            <label for="compañia" class="col-sm-1 control-label">Compañia</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="compañia" placeholder="Compañia" name="compañia" value="<?php echo $compañia; ?>">
+                            </div>
+                            <label for="puesto" class="col-sm-1 control-label">Puesto</label>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="puesto" placeholder="Puesto" name="puesto" value="<?php echo $puesto; ?>">
+                            </div>
+                        </div>
+                        <!-- Fecha Alta/Fecha Baja -->
+                        <div class="form-group">
+                            <label for="fecha_alta" class="col-sm-2 control-label">Fecha de Alta</label>
+                            <div class="col-sm-3">
+                                <div class="form-group input-group">
+                                    <input type="text" class="form-control datepicker" id="fecha_alta" placeholder=" Fecha" name="fecha_alta" data-mask="9999-99-99" value="<?php echo $fecha_alta; ?>">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                            <label for="fecha_baja" class="col-sm-2 control-label">Fecha de Baja</label>
+                            <div class="col-sm-3">
+                                <div class="form-group input-group">
+                                    <input type="text" class="form-control datepicker" id="fecha_baja" placeholder=" Fecha" name="fecha_baja" data-mask="9999-99-99" value="<?php echo $fecha_baja; ?>">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Motivo Baja/Computos Servicios -->
+                        <div class ="form-group">
+                        <label for="motivo_baja" class="col-sm-2 control-label">Motivo de Baja</label>
+                            <div class="col-sm-4">
+                                <textarea class="form-control" rows="2" id="motivo_baja" placeholder="" name="motivo_baja"><?php echo $motivo_baja; ?></textarea>
+                            </div>
+                        <label for="computos_servicios" class="col-sm-2 control-label">Computos de Servicios</label>
+                            <div class="col-sm-3">
+                                <textarea class="form-control" rows="2" id="computos_servicios" placeholder="" name="computos_servicios"><?php echo $computos_servicios; ?></textarea>
+                            </div>
 
-
-
-
-
-
-
+                        </div>
+                        <!-- Sueldo Mensual/Zona Militar -->
+                        <div class="form-group">
+                            <label for="sueldo_mensual" class="col-sm-2 control-label">Sueldo Mensual</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="sueldo_mensual" placeholder="Sueldo" name="sueldo_mensual" value="<?php echo $sueldo_mensual; ?>">
+                            </div>
+                            <label for="zona_militar" class="col-sm-2 control-label">Zona Militar</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="zona_militar" placeholder="Zona" name="zona_militar" value="<?php echo $zona_militar; ?>">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fin Carpeta 3 -->
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                                <?php if ($id == "0" or $id == "") { ?>
+                                    <button type="submit" class="btn btn-success" value="Insertar" name="btn" >Agregar</button>
+                                <?php } else { ?>
+                                    <button type="submit" class="btn btn-warning" value="Actualizar" name="btn" >Modificar</button>
+                                    <button type="submit" class="btn btn-danger" value="Borrar" name="btn" >Borrar</button>
+                                <?php }; ?>
+                                <button type="reset" class="btn btn-inverse" value="Cancelar">Cancelar</button>
+                            </div>
                     </div>
                 </div>
                 </form>

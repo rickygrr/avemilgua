@@ -123,7 +123,7 @@
 
             <!-- ---------------------------------------------EXTRA AVEMILGUA---------------------------------- --><?php if ($_SESSION['usuario_nivel'] <= 5) { ?>
             <li>
-                <a href="#"><i class = "fa fa-users fa-fw"></i> AVEMILGUA <span class="fa arrow"></span></a>
+                <a href="#"><i class = "fa fa-users fa-fw"></i> Avemilgua<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <!-- Ahorita cualquier nivel de usuario puede accesar estas opciones -->
                     <?php if($_SESSION['usuario_nivel'] <= 5) { ?>
