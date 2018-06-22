@@ -299,7 +299,7 @@
                                 <input type="text" class="form-control" id="zona_militar" placeholder="Zona" name="zona_militar" value="<?php echo $zona_militar; ?>">
                             </div>
                         </div>
-                    </div>
+                  </div>
                     <!-- Fin Carpeta 3 -->
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
@@ -311,7 +311,8 @@
                                 <?php }; ?>
                                 <button type="reset" class="btn btn-inverse" value="Cancelar">Cancelar</button>
                             </div>
-                    </div>
+                        </div>
+
                 </div>
                 </form>
                         <!----------------------------------------------------------------------------------------------------------------->

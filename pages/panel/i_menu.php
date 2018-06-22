@@ -127,8 +127,8 @@
                 <ul class="nav nav-second-level">
                     <!-- Ahorita cualquier nivel de usuario puede accesar estas opciones -->
                     <?php if($_SESSION['usuario_nivel'] <= 5) { ?>
-                        <li><a href="index.php?p=usuarios/av_usuarios_edit.php">Nuevo Usuario</a></li>
-                        <li><a href="index.php?p=usuarios/av_usuarios_list.php">Lista de Usuarios</a></li>
+                        <li><a href="index.php?p=usuarios/av_usuarios_edit.php">Inscripción de Veterano</a></li>
+                        <li><a href="index.php?p=usuarios/av_usuarios_list.php">Lista de Veteranos</a></li>
                     <?php }; ?>
                 </ul>
             </li>

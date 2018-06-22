@@ -225,7 +225,6 @@
 	};
     // end if mas adelante
 ?>
-
 <!-- ******************************************************* -->
 
         <!-- BOX TABS -->
@@ -636,7 +635,7 @@
                                 <?php }; ?>
                                 <button type="reset" class="btn btn-inverse" value="Cancelar">Cancelar</button>
                             </div>
-                    </div>
+                        </div>
 		</div>
             </div>
         </form>
