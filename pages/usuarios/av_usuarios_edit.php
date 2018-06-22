@@ -3,10 +3,10 @@
 
 //Definición de Variables locales *
     // av_datos_personales
-    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi; $nacionalidad; $genero; $fecha_nacimiento; $lugar_nacimiento; $vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo;
+    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi; $nacionalidad; $genero; $fecha_nacimiento; $lugar_nacimiento; $vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo; $nit;
 
     // av_datos_servicios
-    global $grado_militar; $compañia; $puesto; $fecha_alta; $fecha_baja; $motivo_baja; $computos_servicios; $sueldo_mensual; $zona_militar;
+    global $grado_militar; $compañia; $puesto; $fecha_alta; $fecha_baja; $motivo_baja; $computo_servicios; $sueldo_mensual; $zona_militar;
 
 //Inicialización de Variables locales *
     // datos_personales
@@ -28,6 +28,7 @@
     $direccion = '';
     $telefono = '';
     $correo = '';
+    $nit = '';
 
     // datos_servicios
     $grado_militar = '';
@@ -36,7 +37,7 @@
     $fecha_alta = '';
     $fecha_baja = '';
     $motivo_baja = '';
-    $computos_servicios = '';
+    $computo_servicios = '';
     $sueldo_mensual = '';
     $zona_militar = '';
 
@@ -59,13 +60,14 @@
     if (!$direccion) { $direccion = isset_or('direccion', ''); };
     if (!$telefono) { $telefono = isset_or('telefono', ''); };
     if (!$correo) { $correo = isset_or('correo', ''); };
+    if (!$nit) { $nit = isset_or('nit', ''); };
 
     if (!$grado_militar) { $grado_militar = isset_or('grado_militar', ''); };
     if (!$compañia) { $compañia = isset_or('compañia', ''); };
     if (!$puesto) { $puesto = isset_or('puesto', ''); };
     if (!$fecha_alta) { $fecha_alta = isset_or('fecha_alta', ''); };
     if (!$motivo_baja) { $motivo_baja = isset_or('motivo_baja', ''); };
-    if (!$computos_servicios) { $computos_servicios = isset_or('computos_servicios', ''); };
+    if (!$computo_servicios) { $computo_servicios = isset_or('computo_servicios', ''); };
     if (!$sueldo_mensual) { $sueldo_mensual = isset_or('sueldo_mensual', ''); };
     if (!$zona_militar) { $zona_militar = isset_or('zona_militar', ''); };
 ?>

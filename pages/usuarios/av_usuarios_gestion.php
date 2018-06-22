@@ -3,13 +3,13 @@
 
 //Definición de Variables locales *
     // av_datos_personales
-    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi; $nacionalidad; $genero; $fecha_nacimiento; $lugar_nacimiento; $vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo;
+    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi; $nacionalidad; $genero; $fecha_nacimiento; $lugar_nacimiento; $vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo; $nit;
 
     // av_datos_servicios
     global $grado_militar; $compañia; $puesto; $fecha_alta; $fecha_baja; $motivo_baja; $computo_servicios; $sueldo_mensual; $zona_militar;
 
 //Inicialización de Variables locales *
-    // datos_personales
+    // av_datos_personales
     $id = '';
     $codigo = '';
     $nombre = '';
@@ -28,8 +28,9 @@
     $direccion = '';
     $telefono = '';
     $correo = '';
+    $nit = '';
 
-    // datos_servicios
+    // av_datos_servicios
     $grado_militar = '';
     $compañia = '';
     $puesto = '';
@@ -59,6 +60,7 @@
     if (!$direccion) { $direccion = isset_or('direccion', ''); };
     if (!$telefono) { $telefono = isset_or('telefono', ''); };
     if (!$correo) { $correo = isset_or('correo', ''); };
+    if (!$nit) { $nit = isset_or('nit', ''); };
 
     if (!$grado_militar) { $grado_militar = isset_or('grado_militar', ''); };
     if (!$compañia) { $compañia = isset_or('compañia', ''); };
@@ -76,13 +78,14 @@
     //Programacion de Funcionalidad para mostrar datos de la pagina*
 
     $btn            = isset_or('btn', '');
+    $resp           = 0;
 
     switch ($btn) {
         case "Insertar":
             $sql1 = "INSERT INTO av_datos_personales (id, codigo, nombre, nombre2,
                     apellido, apellido2, apellido3, dpi, nacionalidad, genero,
                     fecha_nacimiento, lugar_nacimiento, vecindad, estado_civil,
-                    profesion, direccion, telefono, correo) VALUES ('".$id."',
+                    profesion, direccion, telefono, correo, nit) VALUES ('".$id."',
                     '".utf8_decode($codigo)."', '".utf8_decode($nombre)."',
                     '".utf8_decode($nombre2)."', '".utf8_decode($apellido)."',
                     '".utf8_decode($apellido2)."', '".utf8_decode($apellido3)."',
@@ -90,20 +93,20 @@
                     '".$fecha_nacimiento."', '".utf8_decode($lugar_nacimiento)."',
                     '".utf8_decode($vecindad)."', '".$estado_civil."', '".$profesion."',
                     '".utf8_decode($direccion)."', '".utf8_decode($telefono)."',
-                    '".utf8_decode($correo)."' );";
+                    '".utf8_decode($correo)."', '".$nit."' );";
             $sql2 = "INSERT INTO av_datos_servicios (id, grado_militar,
                     compañia, puesto, fecha_alta, fecha_baja, motivo_baja,
-                    computo_servicios, sueldo_mensual, zona_militar) VALUES ('test',
+                    computo_servicios, sueldo_mensual, zona_militar) VALUES ('',
                     '".utf8_decode($grado_militar)."', '".utf8_decode($compañia)."',
                     '".utf8_decode($puesto)."', '".utf8_decode($fecha_alta)."',
                     '".utf8_decode($fecha_baja)."', '".utf8_decode($motivo_baja)."',
                     '".utf8_decode($computo_servicios)."', '".$sueldo_mensual."',
-                    '".utf8_decode($zona_militar)."' );";
+                    '".utf8_decode($zona_militar)."');";
             break;
     }
 
-    if (mysql_query($sql1) and mysql_query($sql2)){
-        $tt_id = mysql_insert_id(); // retorna el ultimo id creado
+    if (mysql_query($sql1) and mysql_query($sql2)) {
+        $tt_id = mysql_insert_id();
         $mensaje1 = '<button type="button" class="btn btn-success btn-circle btn-xl"><i class="fa fa-check"></i></button>';
         $mensaje2 = utf8_encode('Su gestion fue exitosa');
         $mensaje3 = utf8_encode('Gracias por usar nuestro servicio!');
