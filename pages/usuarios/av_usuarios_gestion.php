@@ -8,7 +8,12 @@
     // av_datos_servicios
     global $grado_militar; $compañia; $puesto; $fecha_alta; $fecha_baja; $motivo_baja; $computo_servicios; $sueldo_mensual; $zona_militar;
 
+
+
 //Inicialización de Variables locales *
+    $mensaje1 = '';
+    $mensaje2 = '';
+    $mensaje3 = '';
     // av_datos_personales
     $id = '';
     $codigo = '';
@@ -96,7 +101,7 @@
                     '".utf8_decode($correo)."', '".$nit."' );";
             $sql2 = "INSERT INTO av_datos_servicios (id, grado_militar,
                     compañia, puesto, fecha_alta, fecha_baja, motivo_baja,
-                    computo_servicios, sueldo_mensual, zona_militar) VALUES ('',
+                    computo_servicios, sueldo_mensual, zona_militar) VALUES ('".$last_id."',
                     '".utf8_decode($grado_militar)."', '".utf8_decode($compañia)."',
                     '".utf8_decode($puesto)."', '".utf8_decode($fecha_alta)."',
                     '".utf8_decode($fecha_baja)."', '".utf8_decode($motivo_baja)."',
@@ -105,24 +110,37 @@
             break;
     }
 
-    if (mysql_query($sql1) and mysql_query($sql2)) {
-        $tt_id = mysql_insert_id();
+    function success_msg() {
+        global $mensaje1, $mensaje2, $mensaje3;
         $mensaje1 = '<button type="button" class="btn btn-success btn-circle btn-xl"><i class="fa fa-check"></i></button>';
         $mensaje2 = utf8_encode('Su gestion fue exitosa');
         $mensaje3 = utf8_encode('Gracias por usar nuestro servicio!');
-    } else {
+    }
+
+    function error_msg() {
+        global $mensaje1, $mensaje2, $mensaje3;
         $mensaje1 = '<button type="button" class="btn btn-danger btn-circle btn-xl"><i class="fa fa-times"></i></button>';
         $mensaje2 = utf8_encode('Error de base de datos');
         $mensaje3 = utf8_encode('Su gestion no pudo ser realizada, intentelo de nuevo!');
     }
 
+    if (mysql_query($sql1)) {
+        $last_id = mysql_insert_id();
+        if (mysql_query($sql2)) {
+            success_msg();
+        } else {
+            error_msg();
+        }
+    } else {
+        error_msg();
+    }
 
 ?>
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"><i class="fa fa-ambulance"></i> Gestión de Usuarios</h1>
+                <h1 class="page-header"><i class="fa fa-ambulance"></i> Gestión de Veteranos</h1>
             </div>
             <!-- /.col-lg-12 -->
             <div class="col-md-12 text-center">
@@ -135,7 +153,7 @@
                         <?php echo $mensaje3; ?>
                     </p>
                     <div class="btn-group">
-                        <a href="index.php?p=usuarios/av_usuarios_list.php" class="btn btn-warning"><i class="fa fa-arrow-left"></i> Listado de Usuarios</a>
+                        <a href="index.php?p=usuarios/av_usuarios_list.php" class="btn btn-warning"><i class="fa fa-arrow-left"></i> Listado de Veteranos</a>
                     </div>
                 </div>
             </div>
@@ -147,3 +165,4 @@
 <!-- /#page-wrapper -->
 
 <?php include_once 'panel/i_foot.php'; ?>
+<!-- *: indica que es material/comentarios del cascaron inicial de webappbase -->

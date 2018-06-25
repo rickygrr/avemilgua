@@ -70,6 +70,8 @@
     if (!$computo_servicios) { $computo_servicios = isset_or('computo_servicios', ''); };
     if (!$sueldo_mensual) { $sueldo_mensual = isset_or('sueldo_mensual', ''); };
     if (!$zona_militar) { $zona_militar = isset_or('zona_militar', ''); };
+
+
 ?>
 <!-- HTML -->
 
@@ -78,7 +80,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"><i class="fa fa-user"></i> Administración de Usuarios</h1>
+                <h1 class="page-header"><i class="fa fa-user"></i> Administración de Veteranos</h1>
             </div>
             <!-- /.col-lg-12 * -->
         </div>
@@ -93,7 +95,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <i class="fa fa-info-circle"></i> Ingrese en el siguiente formulario toda la información del usuario
+                        <i class="fa fa-info-circle"></i> Ingrese en el siguiente formulario toda la información del veterano
                     </div>
                         <div class="panel-body">
                         <form class="form-horizontal" role="form" action="index.php" method="post">

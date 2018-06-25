@@ -1,5 +1,20 @@
 <!-- PHP -->
+<?php
 
+//Definición de Variables locales *
+    // av_datos_personales
+    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi; $nacionalidad; $genero; $fecha_nacimiento; $lugar_nacimiento; $vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo; $nit;
+
+    // av_datos_servicios
+    global $grado_militar; $compañia; $puesto; $fecha_alta; $fecha_baja; $motivo_baja; $computo_servicios; $sueldo_mensual; $zona_militar;
+
+$sql1 = "SELECT a.nombre, a.nombre2, a.apellido, a.apellido2, a.codigo, b.grado_militar, b.fecha_baja, a.vecindad, a.telefono FROM av_datos_personales a, av_datos_servicios b WHERE a.id = b.id";;
+    if ($_SESSION['usuario_nivel'] != 1) {
+        $sql1 = $sql1 . " AND u.institucion = '" . $_SESSION['usuario_institucion'] . "' ";
+    };
+
+    $resp1 = mysql_query($sql1);
+?>
 
 <div id="page-wrapper">
     <div class="row">
@@ -13,10 +28,30 @@
         <div class="col-lg-12">
 
 <!-- PHP -->
+<?php
+if (!$resp1) { // Error en la ejecución del query
+    echo "<div class='alert alert-block alert-danger fade in'>
+                <a class='close' data-dismiss='alert' href='#' aria-hidden='true'>&times;</a>
+                <p><h4><i class='fa fa-exclamation-circle'></i> Atención</h4> No pudo ejecutarse satisfactoriamente la consulta: (".$sql1.") en la BD: " . mysql_error() . "</p>
+          </div>";
+        //exit;
+} elseif (mysql_num_rows($resp1) == 0) { // búsqueda satisfactoria, 0 registros encontrados
+    echo "<div class='alert alert-block alert-warning fade in'>
+                <a class='close' data-dismiss='alert' href='#' aria-hidden='true'>&times;</a>
+                <p><h4><i class='fa fa-exclamation-circle'></i> Atención</h4> No se encontraron registros en su búsqueda!</p>
+          </div>";
+} else {
+    echo "<div class='alert alert-block alert-success fade in'>
+                <a class='close' data-dismiss='alert' href='#' aria-hidden='true'>&times;</a>
+                <p><h4><i class='fa fa-check-square-o'></i> ".mysql_num_rows($resp1)." Registros encontrados</h4> Búsqueda satisfactoria, seleccione el registro que desea gestionar por medio del ícono  (<i class='fa fa-pencil'></i>) </p>
+            </div>";
+?>
+
+
 
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    Listado de Usuarios del Sistema
+                    Listado de Veteranos en el Sistema
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -26,21 +61,38 @@
                                 <tr>
                                     <!-- PENDIENTE ESTE CAMBIO -->
                                     <th>Nombre</th>
-                                    <th class="hidden-xs hidden-sm">Usuario (e-Mail)</th>
-                                    <th class="hidden-xs hidden-sm">Emp.</th>
-                                    <th class="hidden-xs">Cargo</th>
-                                    <th class="hidden-xs">Permiso</th>
-                                    <th class="hidden-xs">Est.</th>
+                                    <th class="hidden-xs hidden-sm">Código</th>
+                                    <th class="hidden-xs hidden-sm">Grado Militar</th>
+                                    <th class="hidden-xs">Fecha de Baja</th>
+                                    <th class="hidden-xs">Vecindad</th>
+                                    <th class="hidden-xs">Teléfono</th>
                                     <th class=""><i class="fa fa-cogs"></i></th>
                                 </tr>
                             </thead>
                             <tbody>
 
 <!-- PHP -->
+<?php
+    while($row=mysql_fetch_assoc($resp1)){
+        print "<tr class=''>";
+        print "  <td>".utf8_encode($row['nombre'])." ".utf8_encode($row['nombre2'])." ".utf8_encode($row['apellido'])." ".utf8_encode($row['apellido2'])."</td>";
+        print "  <td class='hidden-xs hidden-sm'>".utf8_encode($row['codigo'])."</td>";
+        print "  <td class='hidden-xs hidden-sm'>".utf8_encode($row['grado_militar'])."</td>";
+        print "  <td class='hidden-xs'>".utf8_encode($row['fecha_baja'])."</td>";
+        print "  <td class='hidden-xs'>".utf8_encode($row['vecindad'])."</td>";
+        print "  <td class='hidden-xs' nowrap>".utf8_encode($row['telefono'])."</td>";
+        print "  <td class='center' align='center' nowrap>
+                    <a href='index.php?p=usuarios/av_usuarios_edit.php&id=".$row['id']."' title='Editar Usuario' ><button class='btn btn-xs btn-default'><i class='fa fa-pencil'></i></button></a>
+                    <a href='index.php?p=usuarios/av_usuarios_gestion.php&id=".$row['id']."&btn=Borrar' title='Borrar Usuario' ><button class='btn btn-xs btn-default'><i class='fa fa-times'></i></button></a>
+                 </td>";
+        print "</tr>";
+    }
+?>
                                  </tbody>
                         </table>
                     </div>
                     <!-- /.table-responsive -->
+                    <!-- PENDIENTE ESTE CAMBIO
                     <div class="well well-sm">
                         <h4><i class="fa fa-info-circle"></i> Instrucciones</h4>
                         <ul>
@@ -51,12 +103,14 @@
                         </ul>
                         <a class="btn btn-warning btn-xs btn-block" target="" href="index.php?p=usuarios/usuarios_edit.php">Ingresar un nuevo usuario</a>
                     </div>
+                    -->
                 </div>
                 <!-- /.panel-body -->
             </div>
             <!-- /.panel -->
         </div>
         <!-- /.col-lg-12 -->
+<?php } ?>
     </div>
     <!-- /.row -->
 </div>
@@ -76,7 +130,7 @@ $(document).ready(function() {
         responsive: true,
         "language": {
             "lengthMenu": "Mostrar _MENU_ registros por página",
-            "zeroRecords": "Lo sentimos - no se encontraros registros",
+            "zeroRecords": "Lo sentimos - no se encontraron registros",
             "info": "Mostrando página _PAGE_ de _PAGES_",
             "search": "Filtrar:",
             "infoEmpty": "No hay registros disponibles",
