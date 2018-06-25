@@ -625,7 +625,7 @@
                         </div>
                         <!-- Fin Carpeta 3 -->
                     </div>
-                    <div class="form-group">
+                        <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                                 <?php if ($id == "0" or $id == "") { ?>
                                     <button type="submit" class="btn btn-success" value="Insertar" name="btn" >Agregar</button>
@@ -636,7 +636,7 @@
                                 <button type="reset" class="btn btn-inverse" value="Cancelar">Cancelar</button>
                             </div>
                         </div>
-		</div>
+        </div>
             </div>
         </form>
         <!-- /BOX -->

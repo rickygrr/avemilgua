@@ -124,7 +124,10 @@
                     motivo_baja = '".utf8_decode($motivo_baja)."', computo_servicios = '".utf8_decode($computo_servicios)."',
                     sueldo_mensual = '".$sueldo_mensual."', zona_militar = '".utf8_decode($zona_militar)."' WHERE id = '".$id."'";
             break;
-
+        case "Borrar":
+            $sql1 = "DELETE FROM av_datos_personales WHERE id = '".$id."'";
+            $sql2 = "DELETE FROM av_datos_servicios WHERE id = '".$id."'";
+            break;
     }
 
     function success_msg() {

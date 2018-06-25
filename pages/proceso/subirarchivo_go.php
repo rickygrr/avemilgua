@@ -19,32 +19,32 @@
                         <form class="form-horizontal" role="form" action="index.php" method="post"  enctype="multipart/form-data">
 <!-- Inicia Formulario (Peledahe) -->
                                         <input class="text" name="p" type="hidden" value="proceso/subirarchivos_gestion.php"/>
-                                        
-                                        
+
+
                                         <div class="form-group">
                                             <label for="nit" class="col-sm-3 control-label">Archivo</label>
                                             <div class="col-sm-9">
                                                 <input type="file" class="file-input" id="nit" placeholder="Archivo" name="archivo" value=""  >
                                             </div>
-                                            
+
                                         </div>
-                                        
+
                                         <div class="form-group">
-                                            
+
                                             <label for="nit" class="col-sm-3 control-label">Descripción</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" id="descripcion" placeholder="Ingresa una descripcion" name="descripcion" value=""  >
                                             </div>
                                         </div>
-                                        
+
                                         <div class="form-group has-warning">
                                             <label for="tipo_doc" class="col-sm-3 control-label">Observaciones</label>
                                             <div class="col-md-9">
                                                 <textarea rows="3" cols="5" name="observaciones" class="form-control"></textarea>
                                             </div>
-                                            
+
                                         </div>
-                                        
+
                                         <center>
                                     <div class='btn-group' >
                                           <button type="submit" class="btn btn-success" value="Upload" name="btn" >Subir Archivo</button>

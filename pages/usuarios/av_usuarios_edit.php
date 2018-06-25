@@ -158,7 +158,9 @@
                         <div class="tabbable header-tabs">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#box_tab1" data-toggle="tab"><i class="fa fa-user"></i> <span class="hidden-inline-mobile">Personal</span></a></li>
-                    <li><a href="#box_tab2" data-toggle="tab"><i class="fa fa-shield"></i> <span class="hidden-inline-mobile">Servicio</span></a></li>
+                    <li><a href="#box_tab2" data-toggle="tab"><i class="fa fa-camera"></i> <span class="hidden-inline-mobile">Fotografía</span></a></li>
+                    <li><a href="#box_tab3" data-toggle="tab"><i class="fa fa-shield"></i> <span class="hidden-inline-mobile">Servicio</span></a></li>
+                    <li><a href="#box_tab4" data-toggle="tab"><i class="fa fa-file"></i> <span class="hidden-inline-mobile">Subir Archivos</span></a></li>
                 </ul>
                 <div class="tab-content">
                 <br>
@@ -303,7 +305,10 @@
                         </div>
                     </div>
                     <!-- Carpeta 2* -->
-                    <div class="tab-pane fade" id="box_tab2">
+                    <div class="tab-pane fade in active" id="box_tab2">
+                    </div>
+                    <!-- Carpeta 3* -->
+                    <div class="tab-pane fade" id="box_tab3">
                         <!-- Grado Militar/Compañia/Puesto-->
                         <div class="form-group">
                             <label for="grado_militar" class="col-sm-2 control-label">Grado Militar</label>
@@ -359,11 +364,14 @@
                                 <input type="text" class="form-control" id="zona_militar" placeholder="Zona" name="zona_militar" value="<?php echo $zona_militar; ?>">
                             </div>
                         </div>
-                  </div>
-                    <!-- Fin Carpeta 3 -->
+                    </div>
+                    <!-- Carpeta 4 -->
+                    <div class="tab-pane fade in active" id="box_tab4">
+                    </div>
+
                     <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                                <?php if ($id == "0" or $id == "") { ?>
+                    <div class="col-sm-offset-2 col-sm-10">
+                            <?php if ($id == "0" or $id == "") { ?>
                                     <button type="submit" class="btn btn-success" value="Insertar" name="btn" >Agregar</button>
                                 <?php } else { ?>
                                     <button type="submit" class="btn btn-warning" value="Actualizar" name="btn" >Modificar</button>
@@ -374,9 +382,9 @@
                     </div>
 
                 </div>
+            </div>
                 </form>
-                        <!----------------------------------------------------------------------------------------------------------------->
-
+                        <!--------------------------------------------------------------------------------------------->
 <!-- /BOX * -->
         </div>
             </div>
