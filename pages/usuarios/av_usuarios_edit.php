@@ -3,7 +3,7 @@
 
 //Definición de Variables locales *
     // av_datos_personales
-    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi; $nacionalidad; $genero; $fecha_nacimiento; $lugar_nacimiento; $vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo; $nit;
+    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi; $nacionalidad; $genero; $fecha_nacimiento; $lugar_nacimiento; $vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo; //$nit;
 
     // av_datos_servicios
     global $grado_militar; $compañia; $puesto; $fecha_alta; $fecha_baja; $motivo_baja; $computo_servicios; $sueldo_mensual; $zona_militar;
@@ -28,7 +28,7 @@
     $direccion = '';
     $telefono = '';
     $correo = '';
-    $nit = '';
+    //$nit = '';
 
     // datos_servicios
     $grado_militar = '';
@@ -51,7 +51,7 @@
     if (!$apellido3) { $apellido3 = isset_or('apellido3', ''); };
     if (!$dpi) { $dpi = isset_or('dpi', ''); };
     if (!$nacionalidad) { $nacionalidad = isset_or('nacionalidad', ''); };
-    if (!$sexo) { $sexo = isset_or('sexo', ''); };
+    if (!$genero) { $genero = isset_or('genero', ''); };
     if (!$fecha_nacimiento) { $fecha_nacimiento = isset_or('fecha_nacimiento', ''); };
     if (!$lugar_nacimiento) { $lugar_nacimiento = isset_or('lugar_nacimiento', ''); };
     if (!$vecindad) { $vecindad = isset_or('vecindad', ''); };
@@ -60,7 +60,7 @@
     if (!$direccion) { $direccion = isset_or('direccion', ''); };
     if (!$telefono) { $telefono = isset_or('telefono', ''); };
     if (!$correo) { $correo = isset_or('correo', ''); };
-    if (!$nit) { $nit = isset_or('nit', ''); };
+    //if (!$nit) { $nit = isset_or('nit', ''); };
 
     if (!$grado_militar) { $grado_militar = isset_or('grado_militar', ''); };
     if (!$compañia) { $compañia = isset_or('compañia', ''); };
@@ -71,8 +71,10 @@
     if (!$sueldo_mensual) { $sueldo_mensual = isset_or('sueldo_mensual', ''); };
     if (!$zona_militar) { $zona_militar = isset_or('zona_militar', ''); };
 
-
 ?>
+
+<!-- ******************************************************* -->
+
 <!-- HTML -->
 
 <!-- Page Content * -->
@@ -88,7 +90,61 @@
 
 <!-- PHP -->
 <?php
-//Pendiente
+    if ($id == "0" or $id == "") {
+        $var_where1 = " ";
+    } else {
+        $var_where1 = " AND a.id = '" . $id . "' ";
+        $sql1 = "SELECT a.id, a.codigo, a.nombre, a.nombre2, a.apellido, a.apellido2, a.apellido3, a.dpi, a.nacionalidad, a.genero, a.fecha_nacimiento, a.lugar_nacimiento, a.vecindad, a.estado_civil, a.profesion, a.direccion, a.telefono, a.correo, b.grado_militar, b.compañia, b.puesto, b.fecha_alta, b.fecha_baja, b.motivo_baja, b.computo_servicios, b.sueldo_mensual, b.zona_militar FROM av_datos_personales a, av_datos_servicios b WHERE a.id = b.id ". $var_where1 ." ";
+
+        $resp1 = mysql_query($sql1);
+
+        if (!$resp1) { // Error en la ejecución del query*
+                    echo "<div class='alert alert-block alert-danger fade in'>
+                            <a class='close' data-dismiss='alert' href='#' aria-hidden='true'>&times;</a>
+                            <p><h4><i class='fa fa-exclamation-circle'></i> Error </h4> No pudo ejecutarse satisfactoriamente la consulta (".$sql1.") en la BD: " . mysql_error() . "</p>
+                          </div>";
+                    //exit*
+        } elseif (mysql_num_rows($resp1) == 0) { // búsqueda satisfactoria, 0 registros encontrados*
+                    echo "<div class='alert alert-block alert-warning fade in'>
+                    <a class='close' data-dismiss='alert' href='#' aria-hidden='true'>&times;</a>
+                    <p><h4><i class='fa fa-exclamation-circle'></i> Atenci&oacute;n</h4> No se encontraron registros en su b&uacute;squeda!</p></div>";
+                    //  exit*
+        } else { // búsqueda satisfactoria, de 1 a mas registros encontrados*
+            // Asignación de valores en variables*
+            while($row = mysql_fetch_assoc($resp1)) {
+                //$id = $row['id'];
+                $codigo = utf8_encode($row['codigo']);
+                $nombre = utf8_encode($row['nombre']);
+                $nombre2 = utf8_encode($row['nombre2']);
+                $apellido = utf8_encode($row['apellido']);
+                $apellido2 = utf8_encode($row['apellido2']);
+                $apellido3 = utf8_encode($row['apellido3']);
+                $dpi = $row['dpi'];
+                $nacionalidad = utf8_encode($row['nacionalidad']);
+                $genero = $row['genero'];
+                $fecha_nacimiento = $row['fecha_nacimiento'];
+                $lugar_nacimiento = utf8_encode($row['lugar_nacimiento']);
+                $vecindad = utf8_encode($row['vecindad']);
+                $estado_civil = $row['estado_civil'];
+                $profesion = $row['profesion'];
+                $direccion = utf8_encode($row['direccion']);
+                $telefono = utf8_encode($row['telefono']);
+                $correo = utf8_encode($row['correo']);
+                //$nit = $row['nit'];
+                /* ***************** */
+                $grado_militar = utf8_encode($row['grado_militar']);
+                $compañia = utf8_encode($row['compañia']);
+                $puesto = utf8_encode($row['puesto']);
+                $fecha_alta = utf8_encode($row['fecha_alta']);
+                $fecha_baja = utf8_encode($row['fecha_baja']);
+                $motivo_baja = utf8_encode($row['motivo_baja']);
+                $computo_servicios = utf8_encode($row['computo_servicios']);
+                $sueldo_mensual = $row['sueldo_mensual'];
+                $zona_militar = utf8_encode($row['zona_militar']);
+            };
+            mysql_free_result($resp1);
+        }; // toma en cuenta en el contenido el html
+    };
 ?>
         <!-- BOX TABS * -->
         <div class="row">
@@ -110,15 +166,13 @@
                     <!-- Carpeta 1* -->
                      <div class="tab-pane fade in active" id="box_tab1">
                         <input class="text" name="p" type="hidden" value="usuarios/av_usuarios_gestion.php"/>
-                         <!-- Codigo/DPI/NIT -->
-                        <div class="form-group">
-                            <!-- ID: Pendiente ----------------------------------------------------------------------------------------
+                         <!-- ID/Codigo/DPI -->
+                        <div class="form-group has-error">
                             <label for="id" class="col-sm-2 control-label">Id (Auto) </label>
                             <div class="col-sm-2">
-                                <input type="text" class="form-control" id="id" placeholder="0" name="id" value="<?php echo $id; ?>"  >
+                                <input type="text" class="form-control" id="id" placeholder="0" name="id" value="<?php echo $id; ?>" readonly>
                             </div>
-                             --------------------------------------------------------------------------------------------------------->
-                            <label for="codigo" class="col-sm-2 control-label">Código</label>
+                            <label for="codigo" class="col-sm-1 control-label">Código</label>
                             <div class="col-sm-2">
                                 <input type="text" class="form-control" id="codigo" placeholder="Código" name="codigo" value="<?php echo $codigo; ?>">
                             </div>
@@ -126,10 +180,12 @@
                             <div class="col-sm-3">
                                 <input type="text" class="form-control" id="dpi" placeholder="Número de D.P.I." name="dpi" value="<?php echo $dpi; ?>">
                             </div>
+                            <!--
                             <label for="nit" class="col-sm-1 control-label">N.I.T.</label>
                             <div class="col-sm-2">
                                 <input type="text" class="form-control" id="nit" placeholder="N.I.T." name="nit" value="<?php echo $nit; ?>">
                             </div>
+                            -->
                         </div>
                          <!-- Nombres -->
                         <div class="form-group">
@@ -176,7 +232,7 @@
                             </div>
                             <label for="genero" class="col-sm-2 control-label">Género</label>
                             <div class="col-sm-4">
-                                <select id="sexo" class="form-control col-md-12" name="genero" >
+                                <select id="genero" class="form-control col-md-12" name="genero" >
                                     <?php
                                         $sql2="SELECT  id, nombre, comodin
                                                 FROM ap_catalogos
@@ -286,9 +342,9 @@
                             <div class="col-sm-4">
                                 <textarea class="form-control" rows="2" id="motivo_baja" placeholder="" name="motivo_baja"><?php echo $motivo_baja; ?></textarea>
                             </div>
-                        <label for="computos_servicios" class="col-sm-2 control-label">Computos de Servicios</label>
+                        <label for="computo_servicios" class="col-sm-2 control-label">Computos de Servicios</label>
                             <div class="col-sm-3">
-                                <textarea class="form-control" rows="2" id="computos_servicios" placeholder="" name="computos_servicios"><?php echo $computos_servicios; ?></textarea>
+                                <textarea class="form-control" rows="2" id="computo_servicios" placeholder="" name="computo_servicios"><?php echo $computo_servicios; ?></textarea>
                             </div>
 
                         </div>
@@ -315,7 +371,7 @@
                                 <?php }; ?>
                                 <button type="reset" class="btn btn-inverse" value="Cancelar">Cancelar</button>
                             </div>
-                        </div>
+                    </div>
 
                 </div>
                 </form>

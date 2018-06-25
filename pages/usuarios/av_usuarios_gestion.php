@@ -3,7 +3,7 @@
 
 //Definición de Variables locales *
     // av_datos_personales
-    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi; $nacionalidad; $genero; $fecha_nacimiento; $lugar_nacimiento; $vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo; $nit;
+    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi; $nacionalidad; $genero; $fecha_nacimiento; $lugar_nacimiento; $vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo; //$nit;
 
     // av_datos_servicios
     global $grado_militar; $compañia; $puesto; $fecha_alta; $fecha_baja; $motivo_baja; $computo_servicios; $sueldo_mensual; $zona_militar;
@@ -33,7 +33,7 @@
     $direccion = '';
     $telefono = '';
     $correo = '';
-    $nit = '';
+    //$nit = '';
 
     // av_datos_servicios
     $grado_militar = '';
@@ -65,7 +65,7 @@
     if (!$direccion) { $direccion = isset_or('direccion', ''); };
     if (!$telefono) { $telefono = isset_or('telefono', ''); };
     if (!$correo) { $correo = isset_or('correo', ''); };
-    if (!$nit) { $nit = isset_or('nit', ''); };
+    //if (!$nit) { $nit = isset_or('nit', ''); };
 
     if (!$grado_militar) { $grado_militar = isset_or('grado_militar', ''); };
     if (!$compañia) { $compañia = isset_or('compañia', ''); };
@@ -90,7 +90,7 @@
             $sql1 = "INSERT INTO av_datos_personales (id, codigo, nombre, nombre2,
                     apellido, apellido2, apellido3, dpi, nacionalidad, genero,
                     fecha_nacimiento, lugar_nacimiento, vecindad, estado_civil,
-                    profesion, direccion, telefono, correo, nit) VALUES ('".$id."',
+                    profesion, direccion, telefono, correo) VALUES ('".$id."',
                     '".utf8_decode($codigo)."', '".utf8_decode($nombre)."',
                     '".utf8_decode($nombre2)."', '".utf8_decode($apellido)."',
                     '".utf8_decode($apellido2)."', '".utf8_decode($apellido3)."',
@@ -98,7 +98,7 @@
                     '".$fecha_nacimiento."', '".utf8_decode($lugar_nacimiento)."',
                     '".utf8_decode($vecindad)."', '".$estado_civil."', '".$profesion."',
                     '".utf8_decode($direccion)."', '".utf8_decode($telefono)."',
-                    '".utf8_decode($correo)."', '".$nit."' );";
+                    '".utf8_decode($correo)."');";
             $sql2 = "INSERT INTO av_datos_servicios (id, grado_militar,
                     compañia, puesto, fecha_alta, fecha_baja, motivo_baja,
                     computo_servicios, sueldo_mensual, zona_militar) VALUES ('".$last_id."',
@@ -108,6 +108,23 @@
                     '".utf8_decode($computo_servicios)."', '".$sueldo_mensual."',
                     '".utf8_decode($zona_militar)."');";
             break;
+
+        case "Actualizar":
+            $sql1 = "UPDATE av_datos_personales SET codigo = '".utf8_decode($codigo)."',
+                    nombre ='".utf8_decode($nombre)."', nombre2 = '".utf8_decode($nombre2)."',
+                    apellido = '".utf8_decode($apellido)."', apellido2 = '".utf8_decode($apellido2)."',
+                    apellido3 = '".utf8_decode($apellido3)."', dpi = '".$dpi."', nacionalidad = '".utf8_decode($nacionalidad)."',
+                    genero = '".$genero."', fecha_nacimiento = '".$fecha_nacimiento."',
+                    lugar_nacimiento = '".utf8_decode($lugar_nacimiento)."', vecindad = '".utf8_decode($vecindad)."',
+                    estado_civil = '".$estado_civil."', profesion = '".$profesion."', direccion = '".utf8_decode($direccion)."',
+                    telefono = '".utf8_decode($telefono)."', correo =  '".utf8_decode($correo)."' WHERE id = '".$id."'";
+            $sql2 = "UPDATE av_datos_servicios SET grado_militar =  '".utf8_decode($grado_militar)."',
+                    compañia = '".utf8_decode($compañia)."', puesto = '".utf8_decode($puesto)."',
+                    fecha_alta =  '".utf8_decode($fecha_alta)."', fecha_baja = '".utf8_decode($fecha_baja)."',
+                    motivo_baja = '".utf8_decode($motivo_baja)."', computo_servicios = '".utf8_decode($computo_servicios)."',
+                    sueldo_mensual = '".$sueldo_mensual."', zona_militar = '".utf8_decode($zona_militar)."' WHERE id = '".$id."'";
+            break;
+
     }
 
     function success_msg() {

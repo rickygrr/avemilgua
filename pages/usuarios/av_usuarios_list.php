@@ -3,15 +3,12 @@
 
 //Definición de Variables locales *
     // av_datos_personales
-    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi; $nacionalidad; $genero; $fecha_nacimiento; $lugar_nacimiento; $vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo; $nit;
+    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi; $nacionalidad; $genero; $fecha_nacimiento; $lugar_nacimiento; $vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo; //$nit;
 
     // av_datos_servicios
     global $grado_militar; $compañia; $puesto; $fecha_alta; $fecha_baja; $motivo_baja; $computo_servicios; $sueldo_mensual; $zona_militar;
 
-$sql1 = "SELECT a.nombre, a.nombre2, a.apellido, a.apellido2, a.codigo, b.grado_militar, b.fecha_baja, a.vecindad, a.telefono FROM av_datos_personales a, av_datos_servicios b WHERE a.id = b.id";;
-    if ($_SESSION['usuario_nivel'] != 1) {
-        $sql1 = $sql1 . " AND u.institucion = '" . $_SESSION['usuario_institucion'] . "' ";
-    };
+    $sql1 = "SELECT a.id as vid, a.nombre, a.nombre2, a.apellido, a.apellido2, a.codigo, b.grado_militar, b.fecha_baja, a.vecindad, a.telefono FROM av_datos_personales a, av_datos_servicios b WHERE a.id = b.id";
 
     $resp1 = mysql_query($sql1);
 ?>
@@ -82,8 +79,8 @@ if (!$resp1) { // Error en la ejecución del query
         print "  <td class='hidden-xs'>".utf8_encode($row['vecindad'])."</td>";
         print "  <td class='hidden-xs' nowrap>".utf8_encode($row['telefono'])."</td>";
         print "  <td class='center' align='center' nowrap>
-                    <a href='index.php?p=usuarios/av_usuarios_edit.php&id=".$row['id']."' title='Editar Usuario' ><button class='btn btn-xs btn-default'><i class='fa fa-pencil'></i></button></a>
-                    <a href='index.php?p=usuarios/av_usuarios_gestion.php&id=".$row['id']."&btn=Borrar' title='Borrar Usuario' ><button class='btn btn-xs btn-default'><i class='fa fa-times'></i></button></a>
+                    <a href='index.php?p=usuarios/av_usuarios_edit.php&id=".$row['vid']."' title='Editar Usuario' ><button class='btn btn-xs btn-default'><i class='fa fa-pencil'></i></button></a>
+                    <a href='index.php?p=usuarios/av_usuarios_gestion.php&id=".$row['vid']."&btn=Borrar' title='Borrar Usuario' ><button class='btn btn-xs btn-default'><i class='fa fa-times'></i></button></a>
                  </td>";
         print "</tr>";
     }
@@ -92,7 +89,7 @@ if (!$resp1) { // Error en la ejecución del query
                         </table>
                     </div>
                     <!-- /.table-responsive -->
-                    <!-- PENDIENTE ESTE CAMBIO
+
                     <div class="well well-sm">
                         <h4><i class="fa fa-info-circle"></i> Instrucciones</h4>
                         <ul>
@@ -101,9 +98,9 @@ if (!$resp1) { // Error en la ejecución del query
                             <li>Haga click en el icono <i class="fa fa-times"></i> para eliminar el registro.</li>
                             <li>Si el registro no está en el listado y desea ingresar uno nuevo, haga click en el boton siguiente.</li>
                         </ul>
-                        <a class="btn btn-warning btn-xs btn-block" target="" href="index.php?p=usuarios/usuarios_edit.php">Ingresar un nuevo usuario</a>
+                        <a class="btn btn-warning btn-xs btn-block" target="" href="index.php?p=usuarios/av_usuarios_edit.php">Ingresar un nuevo usuario</a>
                     </div>
-                    -->
+
                 </div>
                 <!-- /.panel-body -->
             </div>

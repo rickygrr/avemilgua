@@ -204,12 +204,12 @@
 			    $observaciones = utf8_encode($row1['observaciones']);
 			    $actividad = $row1['actividad'];
 			    $estatus = $row1['estatus'];
-                            $nombre2 = $row1['nombre2'];
-                            $apellido2 = $row1['apellido2'];
-                            $apellido3 = $row1['apellido3'];
-                            $igss = $row1['igss'];
-                            $irtra = $row1['irtra'];
-                            $licencia = $row1['licencia'];
+                $nombre2 = $row1['nombre2'];
+                $apellido2 = $row1['apellido2'];
+                $apellido3 = $row1['apellido3'];
+                $igss = $row1['igss'];
+                $irtra = $row1['irtra'];
+                $licencia = $row1['licencia'];
                             $licencia_tipo = $row1['licencia_tipo'];
                             $contrato = $row1['contrato'];
                             $estado_civil = $row1['estado_civil'];
@@ -251,7 +251,7 @@
                         <div class="form-group has-error">
                             <label for="id" class="col-sm-2 control-label">Id (Auto) </label>
                             <div class="col-sm-2">
-                                <input type="text" class="form-control" id="id" placeholder="0" name="id" value="<?php echo $id; ?>"  >
+                                <input type="text" class="form-control" id="id" placeholder="0" name="id" value="<?php echo $id; ?>" readonly>
                             </div>
                             <label for="permiso" class="col-sm-2 control-label">Nivel de Usuario</label>
                             <div class="col-sm-2">

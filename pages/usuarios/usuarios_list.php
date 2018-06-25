@@ -1,32 +1,30 @@
 <?php
-
     //Definición de Variables locales
     global $id; $nick; $password; $nombre; $apellido; $email; $celular; $cargo; $permiso; $institucion;
     global $foto; $nacimiento; $genero; $dpi; $nit; $direccion; $tipoper; $codigo; $calendario1; $calendario2;
     global $observaciones; $actividad; $estatus;
-
     // Consulta SQL
     // echo " [Where]" . $s_where . "[FIN]";
     $sql1 = "SELECT u.id,
-					u.nick,
-    				u.nombre,
+                    u.nick,
+                    u.nombre,
                                 u.nombre2,
-		    		u.apellido,
+                    u.apellido,
                                 u.apellido2,
                                 u.apellido3,
-		    	    (select i.nombre from ap_instituciones i where i.id = u.institucion) as ninstitucion,
-		    	    u.cargo,
-		    	    u.permiso,
-		    	    (select c.nombre from ap_catalogos c where c.id = u.permiso and c.tipo_catalogo = 2 and c.institucion = 1) as npermiso,
-		    	    u.estatus,
-		    	    (select c.nombre from ap_catalogos c where c.id = u.estatus and c.tipo_catalogo = 3 and c.institucion = 1) as nestatus
-		    from ap_usuarios u
-		    WHERE 1=1 ";
+                    (select i.nombre from ap_instituciones i where i.id = u.institucion) as ninstitucion,
+                    u.cargo,
+                    u.permiso,
+                    (select c.nombre from ap_catalogos c where c.id = u.permiso and c.tipo_catalogo = 2 and c.institucion = 1) as npermiso,
+                    u.estatus,
+                    (select c.nombre from ap_catalogos c where c.id = u.estatus and c.tipo_catalogo = 3 and c.institucion = 1) as nestatus
+            from ap_usuarios u
+            WHERE 1=1 ";
     if ($_SESSION['usuario_nivel'] != 1) {
-		$sql1 = $sql1 . " AND u.institucion = '" . $_SESSION['usuario_institucion'] . "' ";
+        $sql1 = $sql1 . " AND u.institucion = '" . $_SESSION['usuario_institucion'] . "' ";
     };
-	$sql1 = $sql1 . "  order by id +0";
-    //	echo "<br>[SQL] ".$sql. " [Fin SQL]";
+    $sql1 = $sql1 . "  order by id +0";
+    //  echo "<br>[SQL] ".$sql. " [Fin SQL]";
     $resp1 = mysql_query($sql1);
 ?>
 <div id="page-wrapper">
@@ -148,15 +146,12 @@ $(document).ready(function() {
             },
         }
     });
-
 });
-
 $(document).ready(function() {
     var t1 = $('#dt-usuarios').eq(0).DataTable();
     new $.fn.dataTable.FixedHeader( t1, {
         bottom: true
     } );
-
  //   var t2 = $('table.display').eq(1).DataTable();
  //   new $.fn.dataTable.FixedHeader( t2, {
  //       bottom: true
