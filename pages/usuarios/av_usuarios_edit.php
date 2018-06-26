@@ -3,7 +3,7 @@
 
 //Definición de Variables locales *
     // av_datos_personales
-    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi;$genero; $fecha_nacimiento;$vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo; $lugar_nacimiento; $nit;  //$nacionalidad;
+    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi;$genero; $fecha_nacimiento;$vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo; $lugar_nacimiento; $nit; $beneficiario;  //$nacionalidad;
 
     // av_datos_servicios
     global $grado_militar; $compañia; $puesto; $fecha_alta; $fecha_baja; $motivo_baja; $computo_servicios; $sueldo_mensual; $zona_militar;
@@ -20,6 +20,7 @@
     $dpi = '';
     // $nacionalidad = '';
     $genero = '';
+    $beneficiario = '';
     $fecha_nacimiento = '';
     $lugar_nacimiento = '';
     $vecindad = '';
@@ -52,6 +53,7 @@
     if (!$dpi) { $dpi = isset_or('dpi', ''); };
     //if (!$nacionalidad) { $nacionalidad = isset_or('nacionalidad', ''); };
     if (!$genero) { $genero = isset_or('genero', ''); };
+    if (!$beneficiario) { $beneficiario = isset_or('beneficiario', ''); };
     if (!$fecha_nacimiento) { $fecha_nacimiento = isset_or('fecha_nacimiento', ''); };
     if (!$lugar_nacimiento) { $lugar_nacimiento = isset_or('lugar_nacimiento', ''); };
     if (!$vecindad) { $vecindad = isset_or('vecindad', ''); };
@@ -219,6 +221,23 @@
                             <div class="col-sm-3">
                                 <input type="text" class="form-control" id="lugar_nacimiento" placeholder="País" name="lugar_nacimiento" value="<?php echo $lugar_nacimiento; ?>">
                             </div>
+                            <!-- PENDIENTE -->
+                            <label for="nacimiento" class="col-sm-2 control-label">Fecha de Nacimiento</label>
+                            <div class="col-sm-3">
+                                <div class="form-group input-group">
+                                    <input type="text" class="form-control datepicker" id="fecha_nacimiento" placeholder="Fecha" name="fecha_nacimiento" data-mask="9999-99-99" value="<?php echo $nacimiento; ?>">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+
+                            <!--
+                            <div class="col-md-6 input-group">
+                            <input type="text" id="testdate" name="testdate" class="form-control" value="">
+                            <label class="input-group-addon btn" for="testdate">
+                            <span class="fa fa-calendar"></span>
+                            </label>
+                            </div>
+                            -->
                             <!--
                             <label for="nacionalidad" class="col-sm-2 control-label">Nacionalidad</label>
                             <div class="col-sm-3">
@@ -228,15 +247,8 @@
                         </div>
                          <!-- Fecha Nacimiento/Genero -->
                         <div class="form-group">
-                            <label for="nacimiento" class="col-sm-2 control-label">Fecha de Nacimiento</label>
-                            <div class="col-sm-3">
-                                <div class="form-group input-group">
-                                    <input type="text" class="form-control datepicker" id="fecha_nacimiento" placeholder="Fecha" name="fecha_nacimiento" data-mask="9999-99-99" value="<?php echo $nacimiento; ?>">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                </div>
-                            </div>
                             <label for="genero" class="col-sm-2 control-label">Género</label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <select id="genero" class="form-control col-md-12" name="genero" >
                                     <?php
                                         $sql2="SELECT  id, nombre, comodin
@@ -250,6 +262,27 @@
                                         while($row2=mysql_fetch_assoc($resp2)){
                                             print '<option value="'.$row2['comodin'].'" ';
                                             if ($genero == $row2['comodin']) { print ' selected="selected" '; };
+                                            print ' >'.utf8_encode($row2['nombre']).'</option>';
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+
+                            <label for="beneficiario" class="col-sm-2 control-label">Beneficiario</label>
+                            <div class="col-sm-3">
+                                <select id="beneficiario" class="form-control col-md-12" name="beneficiario" >
+                                    <?php
+                                        $sql2="SELECT  id, nombre, comodin
+                                                FROM ap_catalogos
+                                                WHERE tipo_catalogo = 37 AND institucion = 1
+                                                ORDER BY id";
+                                        $resp2 = mysql_query($sql2);
+                                    ?>
+                                    <option value="" selected="selected" >Seleccionar</option>
+                                    <?php
+                                        while($row2=mysql_fetch_assoc($resp2)){
+                                            print '<option value="'.$row2['comodin'].'" ';
+                                            if ($beneficiario == $row2['comodin']) { print ' selected="selected" '; };
                                             print ' >'.utf8_encode($row2['nombre']).'</option>';
                                         }
                                     ?>

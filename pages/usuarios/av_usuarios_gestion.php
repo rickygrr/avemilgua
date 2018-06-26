@@ -3,11 +3,10 @@
 
 //Definición de Variables locales *
     // av_datos_personales
-    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi; $genero; $fecha_nacimiento; $vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo; $lugar_nacimiento; $nit; //$nacionalidad;
+    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi; $genero; $fecha_nacimiento; $vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo; $lugar_nacimiento; $nit; $beneficiario; //$nacionalidad;
 
     // av_datos_servicios
     global $grado_militar; $compañia; $puesto; $fecha_alta; $fecha_baja; $motivo_baja; $computo_servicios; $sueldo_mensual; $zona_militar;
-
 
 
 //Inicialización de Variables locales *
@@ -25,6 +24,7 @@
     $dpi = '';
     //$nacionalidad = '';
     $genero = '';
+    $beneficiario = '';
     $fecha_nacimiento = '';
     $lugar_nacimiento = '';
     $vecindad = '';
@@ -56,7 +56,8 @@
     if (!$apellido3) { $apellido3 = isset_or('apellido3', ''); };
     if (!$dpi) { $dpi = isset_or('dpi', ''); };
     //if (!$nacionalidad) { $nacionalidad = isset_or('nacionalidad', ''); };
-    if (!$sexo) { $sexo = isset_or('sexo', ''); };
+    if (!$genero) { $genero = isset_or('genero', ''); };
+    if (!$beneficiario) { $beneficiario = isset_or('beneficiario', ''); };
     if (!$fecha_nacimiento) { $fecha_nacimiento = isset_or('fecha_nacimiento', ''); };
     if (!$lugar_nacimiento) { $lugar_nacimiento = isset_or('lugar_nacimiento', ''); };
     if (!$vecindad) { $vecindad = isset_or('vecindad', ''); };
@@ -88,13 +89,13 @@
     switch ($btn) {
         case "Insertar":
             $sql1 = "INSERT INTO av_datos_personales (id, codigo, nombre, nombre2,
-                    apellido, apellido2, apellido3, dpi, genero,
+                    apellido, apellido2, apellido3, dpi, genero, beneficiario,
                     fecha_nacimiento, vecindad, estado_civil,
                     profesion, direccion, telefono, correo, nit) VALUES ('".$id."',
                     '".utf8_decode($codigo)."', '".utf8_decode($nombre)."',
                     '".utf8_decode($nombre2)."', '".utf8_decode($apellido)."',
                     '".utf8_decode($apellido2)."', '".utf8_decode($apellido3)."',
-                    '".$dpi."', '".$genero."',
+                    '".$dpi."', '".$genero."', '".$beneficiario."',
                     '".$fecha_nacimiento."', '".utf8_decode($vecindad)."',
                     '".$estado_civil."', '".$profesion."',
                     '".utf8_decode($direccion)."', '".utf8_decode($telefono)."',
@@ -114,7 +115,7 @@
                     nombre ='".utf8_decode($nombre)."', nombre2 = '".utf8_decode($nombre2)."',
                     apellido = '".utf8_decode($apellido)."', apellido2 = '".utf8_decode($apellido2)."',
                     apellido3 = '".utf8_decode($apellido3)."', dpi = '".$dpi."',
-                    genero = '".$genero."', fecha_nacimiento = '".$fecha_nacimiento."',
+                    genero = '".$genero."', beneficiario = '".$beneficiario."', fecha_nacimiento = '".$fecha_nacimiento."',
                     lugar_nacimiento = '".$lugar_nacimiento."', vecindad = '".utf8_decode($vecindad)."',
                     estado_civil = '".$estado_civil."', profesion = '".$profesion."', direccion = '".utf8_decode($direccion)."',
                     telefono = '".utf8_decode($telefono)."', correo =  '".utf8_decode($correo)."',
