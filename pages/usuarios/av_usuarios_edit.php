@@ -305,7 +305,21 @@
                         </div>
                     </div>
                     <!-- Carpeta 2* -->
-                    <div class="tab-pane fade in active" id="box_tab2">
+                    <div class="tab-pane fade" id="box_tab2">
+                        <!-- Foto -->
+                        <div class="form-group">
+                            <label for="foto" class="col-sm-2 control-label">Subir Fotografía</label>
+                            <div class="col-sm-9">
+                                <input type="file" class="form-control" id="foto" placeholder="Seleccione una foto" name="foto" value="<?php echo $foto; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="foto" class="col-sm-2 control-label">Tomar Fotografía</label>
+                            <div class="col-sm-9">
+                            <iframe src="../foto.html" name="mipagina" width="700" height="550" frameborder="0">Tu navegador no soporta iframes</iframe>
+                            </div>
+                            
+                        </div>
                     </div>
                     <!-- Carpeta 3* -->
                     <div class="tab-pane fade" id="box_tab3">
@@ -366,7 +380,15 @@
                         </div>
                     </div>
                     <!-- Carpeta 4 -->
-                    <div class="tab-pane fade in active" id="box_tab4">
+                    <div class="tab-pane fade" id="box_tab4">
+                        <div class="form-group">
+                            <label for="foto" class="col-sm-2 control-label">Subir Archivo</label>
+                            <div class="col-sm-9">
+                                <input type="file" class="form-control" id="foto" placeholder="Seleccione una foto" name="foto" value="<?php echo $foto; ?>">
+                            </div>
+                            
+                        </div>
+                       
                     </div>
 
                     <div class="form-group">
