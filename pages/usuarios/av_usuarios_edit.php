@@ -3,7 +3,7 @@
 
 //Definición de Variables locales *
     // av_datos_personales
-    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi; $nacionalidad; $genero; $fecha_nacimiento; $lugar_nacimiento; $vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo; //$nit;
+    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi;$genero; $fecha_nacimiento;$vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo; $lugar_nacimiento; $nit;  //$nacionalidad;
 
     // av_datos_servicios
     global $grado_militar; $compañia; $puesto; $fecha_alta; $fecha_baja; $motivo_baja; $computo_servicios; $sueldo_mensual; $zona_militar;
@@ -18,7 +18,7 @@
     $apellido2 = '';
     $apellido3 = '';
     $dpi = '';
-    $nacionalidad = '';
+    // $nacionalidad = '';
     $genero = '';
     $fecha_nacimiento = '';
     $lugar_nacimiento = '';
@@ -28,7 +28,7 @@
     $direccion = '';
     $telefono = '';
     $correo = '';
-    //$nit = '';
+    $nit = '';
 
     // datos_servicios
     $grado_militar = '';
@@ -50,7 +50,7 @@
     if (!$apellido2) { $apellido2 = isset_or('apellido2', ''); };
     if (!$apellido3) { $apellido3 = isset_or('apellido3', ''); };
     if (!$dpi) { $dpi = isset_or('dpi', ''); };
-    if (!$nacionalidad) { $nacionalidad = isset_or('nacionalidad', ''); };
+    //if (!$nacionalidad) { $nacionalidad = isset_or('nacionalidad', ''); };
     if (!$genero) { $genero = isset_or('genero', ''); };
     if (!$fecha_nacimiento) { $fecha_nacimiento = isset_or('fecha_nacimiento', ''); };
     if (!$lugar_nacimiento) { $lugar_nacimiento = isset_or('lugar_nacimiento', ''); };
@@ -60,7 +60,7 @@
     if (!$direccion) { $direccion = isset_or('direccion', ''); };
     if (!$telefono) { $telefono = isset_or('telefono', ''); };
     if (!$correo) { $correo = isset_or('correo', ''); };
-    //if (!$nit) { $nit = isset_or('nit', ''); };
+    if (!$nit) { $nit = isset_or('nit', ''); };
 
     if (!$grado_militar) { $grado_militar = isset_or('grado_militar', ''); };
     if (!$compañia) { $compañia = isset_or('compañia', ''); };
@@ -94,7 +94,7 @@
         $var_where1 = " ";
     } else {
         $var_where1 = " AND a.id = '" . $id . "' ";
-        $sql1 = "SELECT a.id, a.codigo, a.nombre, a.nombre2, a.apellido, a.apellido2, a.apellido3, a.dpi, a.nacionalidad, a.genero, a.fecha_nacimiento, a.lugar_nacimiento, a.vecindad, a.estado_civil, a.profesion, a.direccion, a.telefono, a.correo, b.grado_militar, b.compañia, b.puesto, b.fecha_alta, b.fecha_baja, b.motivo_baja, b.computo_servicios, b.sueldo_mensual, b.zona_militar FROM av_datos_personales a, av_datos_servicios b WHERE a.id = b.id ". $var_where1 ." ";
+        $sql1 = "SELECT a.id, a.codigo, a.nombre, a.nombre2, a.apellido, a.apellido2, a.apellido3, a.dpi, a.genero, a.fecha_nacimiento, a.lugar_nacimiento, a.vecindad, a.estado_civil, a.profesion, a.direccion, a.telefono, a.correo, a.nit, b.grado_militar, b.compañia, b.puesto, b.fecha_alta, b.fecha_baja, b.motivo_baja, b.computo_servicios, b.sueldo_mensual, b.zona_militar FROM av_datos_personales a, av_datos_servicios b WHERE a.id = b.id ". $var_where1 ." ";
 
         $resp1 = mysql_query($sql1);
 
@@ -120,7 +120,7 @@
                 $apellido2 = utf8_encode($row['apellido2']);
                 $apellido3 = utf8_encode($row['apellido3']);
                 $dpi = $row['dpi'];
-                $nacionalidad = utf8_encode($row['nacionalidad']);
+                //$nacionalidad = utf8_encode($row['nacionalidad']);
                 $genero = $row['genero'];
                 $fecha_nacimiento = $row['fecha_nacimiento'];
                 $lugar_nacimiento = utf8_encode($row['lugar_nacimiento']);
@@ -130,7 +130,7 @@
                 $direccion = utf8_encode($row['direccion']);
                 $telefono = utf8_encode($row['telefono']);
                 $correo = utf8_encode($row['correo']);
-                //$nit = $row['nit'];
+                $nit = $row['nit'];
                 /* ***************** */
                 $grado_militar = utf8_encode($row['grado_militar']);
                 $compañia = utf8_encode($row['compañia']);
@@ -170,24 +170,25 @@
                         <input class="text" name="p" type="hidden" value="usuarios/av_usuarios_gestion.php"/>
                          <!-- ID/Codigo/DPI -->
                         <div class="form-group has-error">
+                            <!--
                             <label for="id" class="col-sm-2 control-label">Id (Auto) </label>
                             <div class="col-sm-2">
                                 <input type="text" class="form-control" id="id" placeholder="0" name="id" value="<?php echo $id; ?>" readonly>
-                            </div>
-                            <label for="codigo" class="col-sm-1 control-label">Código</label>
+                            </div> -->
+                            <label for="codigo" class="col-sm-2 control-label">Código</label>
                             <div class="col-sm-2">
                                 <input type="text" class="form-control" id="codigo" placeholder="Código" name="codigo" value="<?php echo $codigo; ?>">
                             </div>
+
                             <label for="dpi" class="col-sm-1 control-label">D.P.I.</label>
                             <div class="col-sm-3">
                                 <input type="text" class="form-control" id="dpi" placeholder="Número de D.P.I." name="dpi" value="<?php echo $dpi; ?>">
                             </div>
-                            <!--
+
                             <label for="nit" class="col-sm-1 control-label">N.I.T.</label>
                             <div class="col-sm-2">
                                 <input type="text" class="form-control" id="nit" placeholder="N.I.T." name="nit" value="<?php echo $nit; ?>">
                             </div>
-                            -->
                         </div>
                          <!-- Nombres -->
                         <div class="form-group">
@@ -212,16 +213,18 @@
                                 <input type="text" class="form-control" id="apellido3" placeholder="Apellido de Casada" name="apellido3" value="<?php echo $apellido3; ?>">
                             </div>
                         </div>
-                         <!-- Lugar Nacimiento/Nacionalidad -->
+
                         <div class="form-group">
                             <label for="lugar_nacimiento" class="col-sm-2 control-label">Lugar de Nacimiento</label>
                             <div class="col-sm-3">
                                 <input type="text" class="form-control" id="lugar_nacimiento" placeholder="País" name="lugar_nacimiento" value="<?php echo $lugar_nacimiento; ?>">
                             </div>
+                            <!--
                             <label for="nacionalidad" class="col-sm-2 control-label">Nacionalidad</label>
                             <div class="col-sm-3">
                                 <input type="text" class="form-control" id="nacionalidad" placeholder="País" name="nacionalidad" value="<?php echo $nacionalidad; ?>">
                             </div>
+                            -->
                         </div>
                          <!-- Fecha Nacimiento/Genero -->
                         <div class="form-group">
@@ -318,7 +321,7 @@
                             <div class="col-sm-9">
                             <iframe src="../foto.html" name="mipagina" width="700" height="550" frameborder="0">Tu navegador no soporta iframes</iframe>
                             </div>
-                            
+
                         </div>
                     </div>
                     <!-- Carpeta 3* -->
@@ -382,13 +385,32 @@
                     <!-- Carpeta 4 -->
                     <div class="tab-pane fade" id="box_tab4">
                         <div class="form-group">
-                            <label for="foto" class="col-sm-2 control-label">Subir Archivo</label>
+                            <label for="archivo" class="col-sm-3 control-label">Archivo</label>
                             <div class="col-sm-9">
-                                <input type="file" class="form-control" id="foto" placeholder="Seleccione una foto" name="foto" value="<?php echo $foto; ?>">
+                                <input type="file" class="file-input" id="archivo" placeholder="Archivo" name="archivo" value=""  >
                             </div>
-                            
                         </div>
-                       
+
+                        <div class="form-group">
+                            <label for="descripcion" class="col-sm-3 control-label">Descripción</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="descripcion" placeholder="Ingresa una descripcion" name="descripcion" value=""  >
+                            </div>
+                        </div>
+
+                        <div class="form-group has-warning">
+                            <label for="tipo_doc" class="col-sm-3 control-label">Observaciones</label>
+                            <div class="col-md-7">
+                                <textarea rows="3" cols="5" name="observaciones" class="form-control"></textarea>
+                            </div>
+                        </div>
+
+                        <center>
+                        <div class='btn-group' >
+                              <button type="submit" class="btn btn-success" value="Upload" name="btn" >Subir Archivo</button>
+                              <button type="reset" class="btn btn-default" value="Cancelar">Cancelar</button>
+                        </div>
+
                     </div>
 
                     <div class="form-group">

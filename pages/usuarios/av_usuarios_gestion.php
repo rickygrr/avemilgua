@@ -3,7 +3,7 @@
 
 //Definición de Variables locales *
     // av_datos_personales
-    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi; $nacionalidad; $genero; $fecha_nacimiento; $lugar_nacimiento; $vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo; //$nit;
+    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi; $genero; $fecha_nacimiento; $vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo; $lugar_nacimiento; $nit; //$nacionalidad;
 
     // av_datos_servicios
     global $grado_militar; $compañia; $puesto; $fecha_alta; $fecha_baja; $motivo_baja; $computo_servicios; $sueldo_mensual; $zona_militar;
@@ -23,7 +23,7 @@
     $apellido2 = '';
     $apellido3 = '';
     $dpi = '';
-    $nacionalidad = '';
+    //$nacionalidad = '';
     $genero = '';
     $fecha_nacimiento = '';
     $lugar_nacimiento = '';
@@ -33,7 +33,7 @@
     $direccion = '';
     $telefono = '';
     $correo = '';
-    //$nit = '';
+    $nit = '';
 
     // av_datos_servicios
     $grado_militar = '';
@@ -55,7 +55,7 @@
     if (!$apellido2) { $apellido2 = isset_or('apellido2', ''); };
     if (!$apellido3) { $apellido3 = isset_or('apellido3', ''); };
     if (!$dpi) { $dpi = isset_or('dpi', ''); };
-    if (!$nacionalidad) { $nacionalidad = isset_or('nacionalidad', ''); };
+    //if (!$nacionalidad) { $nacionalidad = isset_or('nacionalidad', ''); };
     if (!$sexo) { $sexo = isset_or('sexo', ''); };
     if (!$fecha_nacimiento) { $fecha_nacimiento = isset_or('fecha_nacimiento', ''); };
     if (!$lugar_nacimiento) { $lugar_nacimiento = isset_or('lugar_nacimiento', ''); };
@@ -65,7 +65,7 @@
     if (!$direccion) { $direccion = isset_or('direccion', ''); };
     if (!$telefono) { $telefono = isset_or('telefono', ''); };
     if (!$correo) { $correo = isset_or('correo', ''); };
-    //if (!$nit) { $nit = isset_or('nit', ''); };
+    if (!$nit) { $nit = isset_or('nit', ''); };
 
     if (!$grado_militar) { $grado_militar = isset_or('grado_militar', ''); };
     if (!$compañia) { $compañia = isset_or('compañia', ''); };
@@ -88,17 +88,17 @@
     switch ($btn) {
         case "Insertar":
             $sql1 = "INSERT INTO av_datos_personales (id, codigo, nombre, nombre2,
-                    apellido, apellido2, apellido3, dpi, nacionalidad, genero,
-                    fecha_nacimiento, lugar_nacimiento, vecindad, estado_civil,
-                    profesion, direccion, telefono, correo) VALUES ('".$id."',
+                    apellido, apellido2, apellido3, dpi, genero,
+                    fecha_nacimiento, vecindad, estado_civil,
+                    profesion, direccion, telefono, correo, nit) VALUES ('".$id."',
                     '".utf8_decode($codigo)."', '".utf8_decode($nombre)."',
                     '".utf8_decode($nombre2)."', '".utf8_decode($apellido)."',
                     '".utf8_decode($apellido2)."', '".utf8_decode($apellido3)."',
-                    '".$dpi."', '".utf8_decode($nacionalidad)."', '".$genero."',
-                    '".$fecha_nacimiento."', '".utf8_decode($lugar_nacimiento)."',
-                    '".utf8_decode($vecindad)."', '".$estado_civil."', '".$profesion."',
+                    '".$dpi."', '".$genero."',
+                    '".$fecha_nacimiento."', '".utf8_decode($vecindad)."',
+                    '".$estado_civil."', '".$profesion."',
                     '".utf8_decode($direccion)."', '".utf8_decode($telefono)."',
-                    '".utf8_decode($correo)."');";
+                    '".utf8_decode($correo)."', '".$nit."');";
             $sql2 = "INSERT INTO av_datos_servicios (id, grado_militar,
                     compañia, puesto, fecha_alta, fecha_baja, motivo_baja,
                     computo_servicios, sueldo_mensual, zona_militar) VALUES ('".$last_id."',
@@ -113,11 +113,12 @@
             $sql1 = "UPDATE av_datos_personales SET codigo = '".utf8_decode($codigo)."',
                     nombre ='".utf8_decode($nombre)."', nombre2 = '".utf8_decode($nombre2)."',
                     apellido = '".utf8_decode($apellido)."', apellido2 = '".utf8_decode($apellido2)."',
-                    apellido3 = '".utf8_decode($apellido3)."', dpi = '".$dpi."', nacionalidad = '".utf8_decode($nacionalidad)."',
+                    apellido3 = '".utf8_decode($apellido3)."', dpi = '".$dpi."',
                     genero = '".$genero."', fecha_nacimiento = '".$fecha_nacimiento."',
-                    lugar_nacimiento = '".utf8_decode($lugar_nacimiento)."', vecindad = '".utf8_decode($vecindad)."',
+                    lugar_nacimiento = '".$lugar_nacimiento."', vecindad = '".utf8_decode($vecindad)."',
                     estado_civil = '".$estado_civil."', profesion = '".$profesion."', direccion = '".utf8_decode($direccion)."',
-                    telefono = '".utf8_decode($telefono)."', correo =  '".utf8_decode($correo)."' WHERE id = '".$id."'";
+                    telefono = '".utf8_decode($telefono)."', correo =  '".utf8_decode($correo)."',
+                    nit =  '".$nit."' WHERE id = '".$id."'";
             $sql2 = "UPDATE av_datos_servicios SET grado_militar =  '".utf8_decode($grado_militar)."',
                     compañia = '".utf8_decode($compañia)."', puesto = '".utf8_decode($puesto)."',
                     fecha_alta =  '".utf8_decode($fecha_alta)."', fecha_baja = '".utf8_decode($fecha_baja)."',
