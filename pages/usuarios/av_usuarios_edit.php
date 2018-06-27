@@ -215,13 +215,31 @@
                                 <input type="text" class="form-control" id="apellido3" placeholder="Apellido de Casada" name="apellido3" value="<?php echo $apellido3; ?>">
                             </div>
                         </div>
-
+                        <!-- ************************************************************************************ -->
                         <div class="form-group">
                             <label for="lugar_nacimiento" class="col-sm-2 control-label">Lugar de Nacimiento</label>
                             <div class="col-sm-3">
+
+
+
+
+
+
+
                                 <input type="text" class="form-control" id="lugar_nacimiento" placeholder="País" name="lugar_nacimiento" value="<?php echo $lugar_nacimiento; ?>">
                             </div>
-                            <!-- PENDIENTE -->
+
+
+
+
+
+
+
+
+                        <!-- ************************************************************************************ -->
+
+                        <!-- *****************************PENDIENTE***************************** -->
+
                             <label for="nacimiento" class="col-sm-2 control-label">Fecha de Nacimiento</label>
                             <div class="col-sm-3">
                                 <div class="form-group input-group">
@@ -229,6 +247,7 @@
                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                 </div>
                             </div>
+                        <!-- *****************************PENDIENTE***************************** -->
 
                             <!--
                             <div class="col-md-6 input-group">
@@ -238,12 +257,7 @@
                             </label>
                             </div>
                             -->
-                            <!--
-                            <label for="nacionalidad" class="col-sm-2 control-label">Nacionalidad</label>
-                            <div class="col-sm-3">
-                                <input type="text" class="form-control" id="nacionalidad" placeholder="País" name="nacionalidad" value="<?php echo $nacionalidad; ?>">
-                            </div>
-                            -->
+
                         </div>
                          <!-- Fecha Nacimiento/Genero -->
                         <div class="form-group">
@@ -313,7 +327,23 @@
                             </div>
                             <label for="profesion" class="col-sm-2 control-label">Profesión</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" id="profesion" placeholder="Trabajo" name="profesion" value="<?php echo $profesion; ?>">
+                                <select id="profesion" class="form-control col-md-12" name="profesion" >
+                                    <?php
+                                        $sql2="SELECT  id, nombre, comodin
+                                                FROM ap_catalogos
+                                                WHERE tipo_catalogo = 38 AND institucion = 1
+                                                ORDER BY nombre";
+                                        $resp2 = mysql_query($sql2);
+                                    ?>
+                                    <option value="" selected="selected" >Seleccionar</option>
+                                    <?php
+                                        while($row2=mysql_fetch_assoc($resp2)){
+                                            print '<option value="'.$row2['comodin'].'" ';
+                                            if ($profesion == $row2['comodin']) { print ' selected="selected" '; };
+                                            print ' >'.utf8_encode($row2['nombre']).'</option>';
+                                        }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                         <!-- Direccion/Vecindad -->
