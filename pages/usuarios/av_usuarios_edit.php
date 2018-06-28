@@ -371,8 +371,8 @@
                                                 echo "<optgroup label='".utf8_encode($row2['nunidad'])."'>";
                                                 $refa = $row2['nunidad'];
                                             };
-                                            print '<option value="'.$row2['nombre'].'" ';
-                                            if ($vecindad == $row2['nombre']) { print ' selected="selected" '; };
+                                            print '<option value="'.$row2['id'].'" ';
+                                            if ($vecindad == $row2['id']) { print ' selected="selected" '; };
                                             print ' >'.utf8_encode($row2['nombre']).'</option>';
                                         }
                                     ?>

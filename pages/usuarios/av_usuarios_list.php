@@ -8,7 +8,7 @@
     // av_datos_servicios
     global $grado_militar; $compañia; $puesto; $fecha_alta; $fecha_baja; $motivo_baja; $computo_servicios; $sueldo_mensual; $zona_militar;
 
-    $sql1 = "SELECT a.id as vid, a.nombre, a.nombre2, a.apellido, a.apellido2, a.codigo, b.grado_militar, b.fecha_baja, a.vecindad, a.telefono FROM av_datos_personales a, av_datos_servicios b WHERE a.id = b.id";
+    $sql1 = "SELECT a.id as vid, a.nombre, a.nombre2, a.apellido, a.apellido2, a.codigo, b.grado_militar, b.fecha_baja, a.vecindad, a.telefono, (select b.nombre from ap_municipios b where b.id = a.vecindad) as municipio FROM av_datos_personales a, av_datos_servicios b WHERE a.id = b.id";
 
     $resp1 = mysql_query($sql1);
 ?>
@@ -76,7 +76,7 @@ if (!$resp1) { // Error en la ejecución del query
         print "  <td class='hidden-xs hidden-sm'>".utf8_encode($row['codigo'])."</td>";
         print "  <td class='hidden-xs hidden-sm'>".utf8_encode($row['grado_militar'])."</td>";
         print "  <td class='hidden-xs'>".utf8_encode($row['fecha_baja'])."</td>";
-        print "  <td class='hidden-xs'>".utf8_encode($row['vecindad'])."</td>";
+        print "  <td class='hidden-xs'>".utf8_encode($row['municipio'])."</td>";
         print "  <td class='hidden-xs' nowrap>".utf8_encode($row['telefono'])."</td>";
         print "  <td class='center' align='center' nowrap>
                     <a href='index.php?p=usuarios/av_usuarios_edit.php&id=".$row['vid']."' title='Editar Usuario' ><button class='btn btn-xs btn-default'><i class='fa fa-pencil'></i></button></a>
