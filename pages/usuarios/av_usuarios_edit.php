@@ -259,33 +259,6 @@
                             </div>
 
                         </div>
-
-                        <!-- ************************************************************************************ -->
-
-
-
-                        <!-- *****************************PENDIENTE***************************** -->
-                        <!--
-                            <label for="nacimiento" class="col-sm-2 control-label">Fecha de Nacimiento</label>
-                            <div class="col-sm-3">
-                                <div class="form-group input-group">
-                                    <input type="text" class="form-control datepicker" id="fecha_nacimiento" placeholder="Fecha" name="fecha_nacimiento" data-mask="9999-99-99" value="<?php echo $nacimiento; ?>">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                </div>
-                            </div>
-                        -->
-                        <!-- *****************************PENDIENTE***************************** -->
-
-                            <!--
-                            <div class="col-md-6 input-group">
-                            <input type="text" id="testdate" name="testdate" class="form-control" value="">
-                            <label class="input-group-addon btn" for="testdate">
-                            <span class="fa fa-calendar"></span>
-                            </label>
-                            </div>
-                            -->
-
-                        </div>
                          <!-- Fecha Nacimiento/Genero -->
                         <div class="form-group">
                             <label for="genero" class="col-sm-2 control-label">Género</label>
@@ -381,7 +354,33 @@
                             </div>
                             <label for="vecindad" class="col-sm-1 control-label">Vecindad</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" id="vecindad" placeholder="Vecindad" name="vecindad" value="<?php echo $vecindad; ?>">
+                                <select id="seccion" class="form-control col-md-12" name="seccion" >
+                                    <?php
+                                        $sql2="SELECT a.id,
+                                                      a.nombre,
+                                                      a.departamento_id,
+                                                      (select b.departamento from av_departamentos b where b.departamento_id = a.departamento_id) as nunidad
+                                                FROM ap_municipios a
+                                                WHERE 1=1
+                                                ORDER BY a.departamento_id, a.id";
+                                        $resp2 = mysql_query($sql2);
+                                    ?>
+                                    <option value="" selected="selected" >Seleccionar</option>
+                                    <?php
+                                        while($row2=mysql_fetch_assoc($resp2)){
+                                            if ($refa == '') {
+                                                echo "<optgroup label='".utf8_encode($row2['nunidad'])."'>";
+                                                $refa = $row2['nunidad'];
+                                            } elseif ($refa != $row2['nunidad']) {
+                                                echo "<optgroup label='".utf8_encode($row2['nunidad'])."'>";
+                                                $refa = $row2['nunidad'];
+                                            };
+                                            print '<option value="'.$row2['id'].'" ';
+                                            if ($seccion == $row2['id']) { print ' selected="selected" '; };
+                                            print ' >'.utf8_encode($row2['nombre']).'</option>';
+                                        }
+                                    ?>
+                                </select>
                             </div>
 
                         </div>
