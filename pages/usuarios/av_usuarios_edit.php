@@ -404,15 +404,21 @@
                         <div class="form-group">
                             <label for="foto" class="col-sm-2 control-label">Tomar Fotografía</label>
                             <div class="col-sm-9">
+                            <iframe src="../foto.html" name="mipagina" width="700" height="550" frameborder="0">Tu navegador no soporta iframes</iframe>
+                            </div>
+                            <!--
+                            <div class="col-sm-9">
                                 <video id="video"></video>
                                 <br>
                                 <button id="boton">Tomar foto</button>
                                 <p id="estado"></p>
                                 <canvas id="canvas" style="display: none;"></canvas>
                             </div>
+                            -->
 
                         </div>
                     </div>
+
                     <!-- Carpeta 3* -->
                     <div class="tab-pane fade" id="box_tab3">
                         <!-- Grado Militar/Compañia/Puesto-->
@@ -532,6 +538,7 @@
 
 <?php include_once 'panel/i_foot.php'; ?>
 <script src="script.js"></script>
+<!--
 <script type= "text/javascript">
     var featherEditor = new Aviary.Feather({
     apiKey: 'e35234ad291345d79a844bb964dc51ec',
@@ -555,6 +562,7 @@
 
 });
 </script>
+-->
 <script src="../bower_components/datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
 <!-- Inicia Area Scripts Locales * -->
     <script type="text/javascript">
@@ -710,10 +718,6 @@ if (!monster.get('cookieConsent')) {
         });
     </script>
     <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
-</script>
-<script type="text/javascript">
-_uacct = "UA-106117-1";
-urchinTracker();
 </script>
 <!-- Finaliza Area Scripts Locales * -->
 
