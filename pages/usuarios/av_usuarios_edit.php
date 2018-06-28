@@ -1,3 +1,4 @@
+<script type="text/javascript" src="https://dme0ih8comzn4.cloudfront.net/imaging/v3/editor.js"></script>
 <!-- PHP -->
 <?php
 
@@ -127,8 +128,8 @@
                 //$nacionalidad = utf8_encode($row['nacionalidad']);
                 $genero = $row['genero'];
                 $fecha_nacimiento = $row['fecha_nacimiento'];
-                $lugar_nacimiento = utf8_encode($row['lugar_nacimiento']);
-                $vecindad = utf8_encode($row['vecindad']);
+                $lugar_nacimiento = $row['lugar_nacimiento'];
+                $vecindad = $row['vecindad'];
                 $estado_civil = $row['estado_civil'];
                 $profesion = $row['profesion'];
                 $direccion = utf8_encode($row['direccion']);
@@ -221,7 +222,7 @@
                         <div class="form-group">
                             <label for="lugar_nacimiento" class="col-sm-2 control-label">Lugar de Nacimiento</label>
                             <div class="col-sm-3">
-                                <select id="seccion" class="form-control col-md-12" name="seccion" >
+                                <select id="lugar_nacimiento" class="form-control col-md-12" name="lugar_nacimiento" >
                                     <?php
                                         $sql2="SELECT a.id,
                                                       a.nombre,
@@ -243,7 +244,7 @@
                                                 $refa = $row2['nunidad'];
                                             };
                                             print '<option value="'.$row2['id'].'" ';
-                                            if ($seccion == $row2['id']) { print ' selected="selected" '; };
+                                            if ($lugar_nacimiento == $row2['id']) { print ' selected="selected" '; };
                                             print ' >'.utf8_encode($row2['nombre']).'</option>';
                                         }
                                     ?>
@@ -354,7 +355,7 @@
                             </div>
                             <label for="vecindad" class="col-sm-1 control-label">Vecindad</label>
                             <div class="col-sm-3">
-                                <select id="seccion" class="form-control col-md-12" name="seccion" >
+                                <select id="vecindad" class="form-control col-md-12" name="vecindad" >
                                     <?php
                                         $sql2="SELECT a.id,
                                                       a.nombre,
@@ -376,7 +377,7 @@
                                                 $refa = $row2['nunidad'];
                                             };
                                             print '<option value="'.$row2['id'].'" ';
-                                            if ($seccion == $row2['id']) { print ' selected="selected" '; };
+                                            if ($vecindad == $row2['id']) { print ' selected="selected" '; };
                                             print ' >'.utf8_encode($row2['nombre']).'</option>';
                                         }
                                     ?>
@@ -408,7 +409,11 @@
                         <div class="form-group">
                             <label for="foto" class="col-sm-2 control-label">Tomar Fotografía</label>
                             <div class="col-sm-9">
-                            <iframe src="../foto.html" name="mipagina" width="700" height="550" frameborder="0">Tu navegador no soporta iframes</iframe>
+                                <video id="video"></video>
+                                <br>
+                                <button id="boton">Tomar foto</button>
+                                <p id="estado"></p>
+                                <canvas id="canvas" style="display: none;"></canvas>
                             </div>
 
                         </div>
@@ -531,6 +536,30 @@
 <!-- /#page-wrapper * -->
 
 <?php include_once 'panel/i_foot.php'; ?>
+<script src="script.js"></script>
+<script type= "text/javascript">
+    var featherEditor = new Aviary.Feather({
+    apiKey: 'e35234ad291345d79a844bb964dc51ec',
+    tools: ['orientation', 'crop', 'resize'],
+    displayImageSize: true,
+    theme: 'minimum',
+    appendTo: '',
+    onSave: function(imageID, newURL) {
+        var img = document.getElementById(imageID);
+        img.src = newURL;
+
+        //aqui puede ir ajax para subir imagen
+
+          .done(function( msg ) {
+            alert( "Data Saved: " + msg );
+            //location.reload();
+           // $( "#result" ).html(  msg );
+          });
+        featherEditor.close();
+    }
+
+});
+</script>
 <script src="../bower_components/datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
 <!-- Inicia Area Scripts Locales * -->
     <script type="text/javascript">

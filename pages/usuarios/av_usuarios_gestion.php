@@ -90,13 +90,13 @@
         case "Insertar":
             $sql1 = "INSERT INTO av_datos_personales (id, codigo, nombre, nombre2,
                     apellido, apellido2, apellido3, dpi, genero, beneficiario,
-                    fecha_nacimiento, vecindad, estado_civil,
+                    fecha_nacimiento, lugar_nacimiento, vecindad, estado_civil,
                     profesion, direccion, telefono, correo, nit) VALUES ('".$id."',
                     '".utf8_decode($codigo)."', '".utf8_decode($nombre)."',
                     '".utf8_decode($nombre2)."', '".utf8_decode($apellido)."',
                     '".utf8_decode($apellido2)."', '".utf8_decode($apellido3)."',
                     '".$dpi."', '".$genero."', '".$beneficiario."',
-                    '".$fecha_nacimiento."', '".utf8_decode($vecindad)."',
+                    '".$fecha_nacimiento."', '".$lugar_nacimiento."', '".$vecindad."',
                     '".$estado_civil."', '".$profesion."',
                     '".utf8_decode($direccion)."', '".utf8_decode($telefono)."',
                     '".utf8_decode($correo)."', '".$nit."');";
@@ -116,7 +116,7 @@
                     apellido = '".utf8_decode($apellido)."', apellido2 = '".utf8_decode($apellido2)."',
                     apellido3 = '".utf8_decode($apellido3)."', dpi = '".$dpi."',
                     genero = '".$genero."', beneficiario = '".$beneficiario."', fecha_nacimiento = '".$fecha_nacimiento."',
-                    lugar_nacimiento = '".$lugar_nacimiento."', vecindad = '".utf8_decode($vecindad)."',
+                    lugar_nacimiento = '".$lugar_nacimiento."', vecindad = '".$vecindad."',
                     estado_civil = '".$estado_civil."', profesion = '".$profesion."', direccion = '".utf8_decode($direccion)."',
                     telefono = '".utf8_decode($telefono)."', correo =  '".utf8_decode($correo)."',
                     nit =  '".$nit."' WHERE id = '".$id."'";
