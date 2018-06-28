@@ -175,11 +175,7 @@
                         <input class="text" name="p" type="hidden" value="usuarios/av_usuarios_gestion.php"/>
                          <!-- ID/Codigo/DPI -->
                         <div class="form-group has-error">
-                            <!--
-                            <label for="id" class="col-sm-2 control-label">Id (Auto) </label>
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" id="id" placeholder="0" name="id" value="<?php echo $id; ?>" readonly>
-                            </div> -->
+                            <input type="hidden" class="form-control" id="id" placeholder="0" name="id" value="<?php echo $id; ?>" readonly>
                             <label for="codigo" class="col-sm-2 control-label">Código</label>
                             <div class="col-sm-2">
                                 <input type="text" class="form-control" id="codigo" placeholder="Código" name="codigo" value="<?php echo $codigo; ?>">

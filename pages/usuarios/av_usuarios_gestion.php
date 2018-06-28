@@ -111,21 +111,37 @@
             break;
 
         case "Actualizar":
-            $sql1 = "UPDATE av_datos_personales SET codigo = '".utf8_decode($codigo)."',
-                    nombre ='".utf8_decode($nombre)."', nombre2 = '".utf8_decode($nombre2)."',
-                    apellido = '".utf8_decode($apellido)."', apellido2 = '".utf8_decode($apellido2)."',
-                    apellido3 = '".utf8_decode($apellido3)."', dpi = '".$dpi."',
-                    genero = '".$genero."', beneficiario = '".$beneficiario."', fecha_nacimiento = '".$fecha_nacimiento."',
-                    lugar_nacimiento = '".$lugar_nacimiento."', vecindad = '".$vecindad."',
-                    estado_civil = '".$estado_civil."', profesion = '".$profesion."', direccion = '".utf8_decode($direccion)."',
-                    telefono = '".utf8_decode($telefono)."', correo =  '".utf8_decode($correo)."',
-                    nit =  '".$nit."' WHERE id = '".$id."'";
-            $sql2 = "UPDATE av_datos_servicios SET grado_militar =  '".utf8_decode($grado_militar)."',
-                    compañia = '".utf8_decode($compañia)."', puesto = '".utf8_decode($puesto)."',
-                    fecha_alta =  '".utf8_decode($fecha_alta)."', fecha_baja = '".utf8_decode($fecha_baja)."',
-                    motivo_baja = '".utf8_decode($motivo_baja)."', computo_servicios = '".utf8_decode($computo_servicios)."',
-                    sueldo_mensual = '".$sueldo_mensual."', zona_militar = '".utf8_decode($zona_militar)."' WHERE id = '".$id."'";
-            break;
+            $sql1 = "UPDATE av_datos_personales SET
+                    codigo = '".utf8_decode($codigo)."',
+                    nombre ='".utf8_decode($nombre)."',
+                    nombre2 = '".utf8_decode($nombre2)."',
+                    apellido = '".utf8_decode($apellido)."',
+                    apellido2 = '".utf8_decode($apellido2)."',
+                    apellido3 = '".utf8_decode($apellido3)."',
+                    dpi = '".$dpi."', nacionalidad = '".utf8_decode($nacionalidad)."',
+                    genero = '".$genero."',
+                    fecha_nacimiento = '".$fecha_nacimiento."',
+                    lugar_nacimiento = '".utf8_decode($lugar_nacimiento)."',
+                    vecindad = '".utf8_decode($vecindad)."',
+                    estado_civil = '".$estado_civil."',
+                    profesion = '".$profesion."',
+                    direccion = '".utf8_decode($direccion)."',
+                    telefono = '".utf8_decode($telefono)."',
+                    correo =  '".utf8_decode($correo)."',
+                    nit = '".utf8_decode($nit)."'
+                    WHERE id = '".$id."'";
+             $sql2 = "UPDATE av_datos_servicios SET
+                    grado_militar =  '".utf8_decode($grado_militar)."',
+                    compañia = '".utf8_decode($compañia)."',
+                    puesto = '".utf8_decode($puesto)."',
+                    fecha_alta =  '".utf8_decode($fecha_alta)."',
+                    fecha_baja = '".utf8_decode($fecha_baja)."',
+                    motivo_baja = '".utf8_decode($motivo_baja)."',
+                    computo_servicios = '".utf8_decode($computo_servicios)."',
+                    sueldo_mensual = '".$sueldo_mensual."',
+                    zona_militar = '".utf8_decode($zona_militar)."'
+                    WHERE id = '".$id."'";
+             break;
         case "Borrar":
             $sql1 = "DELETE FROM av_datos_personales WHERE id = '".$id."'";
             $sql2 = "DELETE FROM av_datos_servicios WHERE id = '".$id."'";
