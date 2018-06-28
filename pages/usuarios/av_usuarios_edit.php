@@ -3,7 +3,7 @@
 
 //Definición de Variables locales *
     // av_datos_personales
-    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi;$genero; $fecha_nacimiento;$vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo; $lugar_nacimiento; $nit; $beneficiario;  //$nacionalidad;
+    global $id; $codigo; $nombre; $nombre2; $apellido; $apellido2; $apellido3; $dpi;$genero; $fecha_nacimiento;$vecindad; $estado_civil; $profesion; $direccion; $telefono; $correo; $lugar_nacimiento; $nit; $beneficiario; $departamento_id; //$nacionalidad;
 
     // av_datos_servicios
     global $grado_militar; $compañia; $puesto; $fecha_alta; $fecha_baja; $motivo_baja; $computo_servicios; $sueldo_mensual; $zona_militar;
@@ -30,6 +30,7 @@
     $telefono = '';
     $correo = '';
     $nit = '';
+    $departamento_id = '';
 
     // datos_servicios
     $grado_militar = '';
@@ -63,6 +64,7 @@
     if (!$telefono) { $telefono = isset_or('telefono', ''); };
     if (!$correo) { $correo = isset_or('correo', ''); };
     if (!$nit) { $nit = isset_or('nit', ''); };
+    if (!$departamento_id) { $departamento_id = isset_or('departamento_id', ''); };
 
     if (!$grado_militar) { $grado_militar = isset_or('grado_militar', ''); };
     if (!$compañia) { $compañia = isset_or('compañia', ''); };
@@ -219,26 +221,34 @@
                         <div class="form-group">
                             <label for="lugar_nacimiento" class="col-sm-2 control-label">Lugar de Nacimiento</label>
                             <div class="col-sm-3">
-
-
-
-
-
-
-
-                                <input type="text" class="form-control" id="lugar_nacimiento" placeholder="País" name="lugar_nacimiento" value="<?php echo $lugar_nacimiento; ?>">
+                                <select id="seccion" class="form-control col-md-12" name="seccion" >
+                                    <?php
+                                        $sql2="SELECT a.id,
+                                                      a.nombre,
+                                                      a.departamento_id,
+                                                      (select b.departamento from av_departamentos b where b.departamento_id = a.departamento_id) as nunidad
+                                                FROM ap_municipios a
+                                                WHERE 1=1
+                                                ORDER BY a.departamento_id, a.id";
+                                        $resp2 = mysql_query($sql2);
+                                    ?>
+                                    <option value="" selected="selected" >Seleccionar</option>
+                                    <?php
+                                        while($row2=mysql_fetch_assoc($resp2)){
+                                            if ($refa == '') {
+                                                echo "<optgroup label='".utf8_encode($row2['nunidad'])."'>";
+                                                $refa = $row2['nunidad'];
+                                            } elseif ($refa != $row2['nunidad']) {
+                                                echo "<optgroup label='".utf8_encode($row2['nunidad'])."'>";
+                                                $refa = $row2['nunidad'];
+                                            };
+                                            print '<option value="'.$row2['id'].'" ';
+                                            if ($seccion == $row2['id']) { print ' selected="selected" '; };
+                                            print ' >'.utf8_encode($row2['nombre']).'</option>';
+                                        }
+                                    ?>
+                                </select>
                             </div>
-
-
-
-
-
-
-
-
-                        <!-- ************************************************************************************ -->
-
-                        <!-- *****************************PENDIENTE***************************** -->
 
                             <label for="nacimiento" class="col-sm-2 control-label">Fecha de Nacimiento</label>
                             <div class="col-sm-3">
@@ -247,6 +257,23 @@
                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                 </div>
                             </div>
+
+                        </div>
+
+                        <!-- ************************************************************************************ -->
+
+
+
+                        <!-- *****************************PENDIENTE***************************** -->
+                        <!--
+                            <label for="nacimiento" class="col-sm-2 control-label">Fecha de Nacimiento</label>
+                            <div class="col-sm-3">
+                                <div class="form-group input-group">
+                                    <input type="text" class="form-control datepicker" id="fecha_nacimiento" placeholder="Fecha" name="fecha_nacimiento" data-mask="9999-99-99" value="<?php echo $nacimiento; ?>">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                        -->
                         <!-- *****************************PENDIENTE***************************** -->
 
                             <!--
