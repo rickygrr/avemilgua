@@ -247,7 +247,7 @@
                                 </select>
                             </div>
 
-                            <label for="fecha_nacimiento" class="col-sm-2 control-label">Fecha de Nacimiento</label>
+                            <label for="fecha_nacimiento" class="col-sm-3 control-label">Fecha de Nacimiento</label>
                             <div class="col-sm-3">
                                   <div class="form-group input-group">
                                     <input name="fecha_nacimiento" class="form-control" id="dpYears" data-date="1940-01-01" data-date-format="yyyy-mm-dd" data-date-viewmode="years" size="16" type="text" value="<?php if(!$fecha_nacimiento){echo "1940-01-01";}else {echo $fecha_nacimiento;}?>">
@@ -255,7 +255,7 @@
                                   </div>
                             </div>
                         </div>
-                         <!-- Fecha Nacimiento/Genero -->
+                         <!-- Genero/Beneficiario -->
                         <div class="form-group">
                             <label for="genero" class="col-sm-2 control-label">Género</label>
                             <div class="col-sm-3">
